@@ -7,7 +7,7 @@ import 'package:demo/wonders_color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:sized_context/sized_context.dart';
 
-import '../../../logic/data/wonder_type.dart';
+import '../data/wonder_type.dart';
 import '../fade_color_transition.dart';
 import '../illustration_piece.dart';
 

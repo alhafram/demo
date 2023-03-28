@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../../logic/data/wonder_type.dart';
+import 'wonder_type.dart';
 
 class WonderData extends Equatable {
   const WonderData({

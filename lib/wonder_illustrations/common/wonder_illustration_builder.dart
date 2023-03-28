@@ -1,7 +1,7 @@
 import 'package:demo/wonder_illustrations/common/wonder_illustration_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../logic/data/wonder_type.dart';
+import 'data/wonder_type.dart';
 
 /// Takes a builder for each of the 3 illustration layers.
 /// Each builder returns a list of Widgets which will be added directly to a Stack.

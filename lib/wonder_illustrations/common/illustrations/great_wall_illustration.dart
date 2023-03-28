@@ -6,7 +6,7 @@ import 'package:demo/wonders_color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:sized_context/sized_context.dart';
 
-import '../../../logic/data/wonder_type.dart';
+import '../data/wonder_type.dart';
 import '../fade_color_transition.dart';
 import '../illustration_piece.dart';
 
@@ -35,14 +35,14 @@ class GreatWallIllustration extends StatelessWidget {
         child: IllustrationTexture(
           ImagePaths.roller2,
           flipX: true,
-          color: Color(0xff688750),
+          color: const Color(0xff688750),
           opacity: anim.drive(Tween(begin: 0, end: 1)),
           scale: config.shortMode ? 4 : 1.15,
         ),
       ),
       IllustrationPiece(
         fileName: 'sun.png',
-        initialOffset: Offset(0, 50),
+        initialOffset: const Offset(0, 50),
         enableHero: true,
         heightFactor: config.shortMode ? .07 : .25,
         minHeight: 120,

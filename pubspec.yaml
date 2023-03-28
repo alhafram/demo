@@ -68,6 +68,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/_common/
+    - assets/images/_common/texture/
     - assets/images/chichen_itza/
     - assets/images/christ_the_redeemer/
     - assets/images/colosseum/

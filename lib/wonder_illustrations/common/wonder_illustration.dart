@@ -1,4 +1,4 @@
-import 'package:demo/logic/data/wonder_type.dart';
+import 'package:demo/wonder_illustrations/common/data/wonder_type.dart';
 import 'package:demo/wonder_illustrations/common/illustrations/chichen_itza_illustration.dart';
 import 'package:demo/wonder_illustrations/common/illustrations/petra_illustration.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'logic/data/wonder_type.dart';
+import 'wonder_illustrations/common/data/wonder_type.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 /// Loads bitmap assets into memory that may be required later

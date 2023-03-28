@@ -4,7 +4,7 @@ import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:rnd/rnd.dart';
 import 'package:sized_context/sized_context.dart';
 import '../../assets.dart';
-import '../../logic/data/wonder_type.dart';
+import 'data/wonder_type.dart';
 import 'context_utils.dart';
 export 'package:rnd/rnd.dart';
 

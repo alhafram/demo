@@ -7,7 +7,7 @@ import 'package:demo/wonders_color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
-import 'logic/data/wonder_type.dart';
+import 'wonder_illustrations/common/data/wonder_type.dart';
 
 class HomeScreen extends StatefulWidget with GetItStatefulWidgetMixin {
   HomeScreen({Key? key}) : super(key: key);
