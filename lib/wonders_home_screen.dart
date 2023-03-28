@@ -1,13 +1,13 @@
-import 'package:demo/wonder_illustrations/common/animated_clouds.dart';
-import 'package:demo/wonder_illustrations/common/data/wonder_data.dart';
-import 'package:demo/wonder_illustrations/common/wonder_illustration.dart';
-import 'package:demo/wonder_illustrations/common/wonder_illustration_config.dart';
-import 'package:demo/wonder_illustrations/common/wonders_logic.dart';
+import 'package:demo/wonder_illustrations/animated_clouds.dart';
+import 'package:demo/wonder_illustrations/data/wonder_data.dart';
+import 'package:demo/wonder_illustrations/wonder_illustration.dart';
+import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
+import 'package:demo/wonder_illustrations/wonders_logic.dart';
 import 'package:demo/wonders_color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
-import 'wonder_illustrations/common/data/wonder_type.dart';
+import 'wonder_illustrations/data/wonder_type.dart';
 
 class HomeScreen extends StatefulWidget with GetItStatefulWidgetMixin {
   HomeScreen({Key? key}) : super(key: key);
@@ -21,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen>
   late final PageController _pageController;
   List<WonderData> get _wonders => WondersLogic().all;
 
-  /// Set initial wonderIndex
   late int _wonderIndex = 0;
   int get _numWonders => _wonders.length;
   bool _fadeInOnNextBuild = false;
@@ -114,13 +113,11 @@ class _HomeScreenState extends State<HomeScreen>
 
   List<Widget> _buildBgAndClouds() {
     return [
-      // Background
       ..._wonders.map((e) {
         final config =
             WonderIllustrationConfig.bg(isShowing: _isSelected(e.type));
         return WonderIllustration(e.type, config: config);
       }).toList(),
-      // Clouds
       FractionallySizedBox(
         widthFactor: 1,
         heightFactor: .5,
