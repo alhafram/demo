@@ -18,10 +18,8 @@ class IllustrationPiece extends StatefulWidget {
     this.minHeight,
     this.offset = Offset.zero,
     this.fractionalOffset,
-    this.zoomAmt = 0,
     this.initialOffset = Offset.zero,
     this.enableHero = false,
-    this.initialScale = 1,
     this.dynamicHzOffset = 0,
     this.top,
     this.bottom,
@@ -34,9 +32,6 @@ class IllustrationPiece extends StatefulWidget {
   /// Will animate from this position to Offset.zero, eg is value is Offset(0, 100), the piece will slide up vertically 100px as it enters the screen
   final Offset initialOffset;
 
-  /// Will animate from this scale to 1, eg if scale is .7, the piece will scale from .7 to 1.0 as it enters the screen.
-  final double initialScale;
-
   /// % height, will be overridden by minHeight
   final double heightFactor;
 
@@ -48,9 +43,6 @@ class IllustrationPiece extends StatefulWidget {
 
   /// offset based on a fraction of the piece size
   final Offset? fractionalOffset;
-
-  /// The % amount that this object should scale up as the user drags their finger up the screen
-  final double zoomAmt;
 
   /// Adds a hero tag to this piece, made from wonderType + fileName
   final bool enableHero;
@@ -89,14 +81,10 @@ class _IllustrationPieceState extends State<IllustrationPiece> {
           builder: (_, constraints) {
             final anim = wonderBuilder.anim;
             final curvedAnim = Curves.easeOut.transform(anim.value);
-            final config = wonderBuilder.widget.config;
             Widget img =
                 Image.asset(imgPath, opacity: anim, fit: BoxFit.fitHeight);
             // Add overflow box so image doesn't get clipped as we translate it around
             img = OverflowBox(maxWidth: 2500, child: img);
-
-            final double introZoom =
-                (widget.initialScale - 1) * (1 - curvedAnim);
 
             /// Determine target height
             final double height = max(widget.minHeight ?? 0,
@@ -124,16 +112,12 @@ class _IllustrationPieceState extends State<IllustrationPiece> {
             Widget? content;
             if (uiImage != null) {
               content = Transform.translate(
-                offset: finalTranslation,
-                child: Transform.scale(
-                  scale: 1 + (widget.zoomAmt * config.zoom) + introZoom,
+                  offset: finalTranslation,
                   child: SizedBox(
                     height: height,
                     width: height * aspectRatio!,
                     child: img,
-                  ),
-                ),
-              );
+                  ));
             }
 
             return Stack(

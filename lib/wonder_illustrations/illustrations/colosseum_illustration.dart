@@ -57,7 +57,6 @@ class ColosseumIllustration extends StatelessWidget {
         enableHero: true,
         heightFactor: .6,
         minHeight: 200,
-        zoomAmt: .15,
         fractionalOffset: Offset(0, config.shortMode ? .10 : -.1),
       )
     ];
@@ -68,22 +67,18 @@ class ColosseumIllustration extends StatelessWidget {
       const IllustrationPiece(
         fileName: 'foreground-left.png',
         alignment: Alignment.bottomCenter,
-        initialScale: .9,
         initialOffset: Offset(-40, 60),
         heightFactor: .65,
         offset: Offset.zero,
         fractionalOffset: Offset(-.5, .1),
-        zoomAmt: .05,
         dynamicHzOffset: -150,
       ),
       const IllustrationPiece(
         fileName: 'foreground-right.png',
         alignment: Alignment.bottomCenter,
         initialOffset: Offset(20, 40),
-        initialScale: .95,
         heightFactor: .75,
         fractionalOffset: Offset(.5, .25),
-        zoomAmt: .05,
         dynamicHzOffset: 150,
       ),
     ];

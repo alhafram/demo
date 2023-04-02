@@ -101,10 +101,7 @@ class _HomeScreenState extends State<HomeScreen>
           final wonder = _wonders[index % _wonders.length];
           final wonderType = wonder.type;
           bool isShowing = _isSelected(wonderType);
-          final config = WonderIllustrationConfig.mg(
-            isShowing: isShowing,
-            zoom: .05 * 1,
-          );
+          final config = WonderIllustrationConfig.mg(isShowing: isShowing);
           return WonderIllustration(wonderType, config: config);
         },
       ),
@@ -157,10 +154,8 @@ class _HomeScreenState extends State<HomeScreen>
 
       /// Foreground decorators
       ..._wonders.map((e) {
-        final config = WonderIllustrationConfig.fg(
-          isShowing: _isSelected(e.type),
-          zoom: .4 * 1,
-        );
+        final config =
+            WonderIllustrationConfig.fg(isShowing: _isSelected(e.type));
         return Animate(
             effects: const [FadeEffect()],
             onPlay: _handleFadeAnimInit,

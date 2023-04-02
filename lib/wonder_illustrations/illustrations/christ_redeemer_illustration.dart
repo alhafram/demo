@@ -59,7 +59,6 @@ class ChristRedeemerIllustration extends StatelessWidget {
           heightFactor: 1,
           alignment: Alignment.bottomCenter,
           fractionalOffset: Offset(0, config.shortMode ? .5 : .1),
-          zoomAmt: .7,
         ),
       )
       //
@@ -71,21 +70,17 @@ class ChristRedeemerIllustration extends StatelessWidget {
       const IllustrationPiece(
         fileName: 'foreground-left.png',
         alignment: Alignment.bottomCenter,
-        initialScale: .95,
         initialOffset: Offset(-140, 60),
         heightFactor: .65,
         fractionalOffset: Offset(-.25, .05),
-        zoomAmt: .15,
         dynamicHzOffset: -100,
       ),
       const IllustrationPiece(
         fileName: 'foreground-right.png',
         alignment: Alignment.bottomCenter,
         initialOffset: Offset(120, 40),
-        initialScale: .9,
         heightFactor: .55,
         fractionalOffset: Offset(.35, .2),
-        zoomAmt: .1,
         dynamicHzOffset: 100,
       ),
     ];

@@ -11,9 +11,6 @@ import 'package:demo/wonder_illustrations/data/wonder_data.dart';
 class WondersLogic {
   List<WonderData> all = [];
 
-  final int timelineStartYear = -3000;
-  final int timelineEndYear = 2200;
-
   WondersLogic() {
     all = [
       const GreatWallData(),
