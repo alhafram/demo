@@ -18,7 +18,7 @@ class IllustrationTexture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-        animation: opacity ?? AlwaysStoppedAnimation(1),
+        animation: opacity ?? const AlwaysStoppedAnimation(1),
         builder: (context, child) => ClipRect(
           child: Transform.scale(
               scaleX: scale * (flipX ? -1 : 1),

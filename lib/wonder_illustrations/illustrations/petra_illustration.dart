@@ -57,6 +57,7 @@ class PetraIllustration extends StatelessWidget {
             fileName: 'petra.png',
             heightFactor: .65,
             minHeight: 500,
+            zoomAmt: config.shortMode ? -0.1 : -1,
             enableHero: true,
             fractionalOffset: Offset(0, config.shortMode ? .025 : 0),
           ),
@@ -71,6 +72,7 @@ class PetraIllustration extends StatelessWidget {
         initialOffset: const Offset(-80, 0),
         heightFactor: 1,
         fractionalOffset: const Offset(-.6, 0),
+        zoomAmt: .03,
         dynamicHzOffset: -130,
         bottom: (_) {
           /// To cover everything behind this piece with a solid color, we scale up a container
@@ -91,6 +93,7 @@ class PetraIllustration extends StatelessWidget {
         initialOffset: const Offset(80, 00),
         heightFactor: 1,
         fractionalOffset: const Offset(.55, 0),
+        zoomAmt: .12,
         dynamicHzOffset: 130,
         bottom: (_) {
           /// To cover everything behind this piece with a solid color, we scale up a container and then offset it in negative space

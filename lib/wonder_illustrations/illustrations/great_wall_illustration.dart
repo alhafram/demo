@@ -1,11 +1,11 @@
 import 'package:demo/assets.dart';
+import 'package:demo/colors.dart';
 import 'package:demo/wonder_illustrations/data/wonder_type.dart';
 import 'package:demo/wonder_illustrations/fade_color_transition.dart';
 import 'package:demo/wonder_illustrations/illustration_piece.dart';
 import 'package:demo/wonder_illustrations/paint_textures.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_builder.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
-import 'package:demo/wonders_color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:sized_context/sized_context.dart';
 
@@ -29,7 +29,8 @@ class GreatWallIllustration extends StatelessWidget {
 
   List<Widget> _buildBg(BuildContext context, Animation<double> anim) {
     return [
-      FadeColorTransition(animation: anim, color: Colors.black),
+      FadeColorTransition(
+          animation: anim, color: AppColors().shift(fgColor, .15)),
       Positioned.fill(
         child: IllustrationTexture(
           ImagePaths.roller2,
@@ -58,6 +59,7 @@ class GreatWallIllustration extends StatelessWidget {
         fileName: 'great-wall.png',
         heightFactor: config.shortMode ? .45 : .65,
         minHeight: 250,
+        zoomAmt: .05,
         enableHero: true,
         fractionalOffset: Offset(0, config.shortMode ? .15 : -.15),
       ),
@@ -69,17 +71,21 @@ class GreatWallIllustration extends StatelessWidget {
       const IllustrationPiece(
         fileName: 'foreground-left.png',
         alignment: Alignment.bottomCenter,
+        initialScale: .9,
         initialOffset: Offset(-40, 60),
         heightFactor: .85,
         fractionalOffset: Offset(-.4, .45),
+        zoomAmt: .25,
         dynamicHzOffset: -150,
       ),
       const IllustrationPiece(
         fileName: 'foreground-right.png',
         alignment: Alignment.bottomCenter,
         initialOffset: Offset(20, 40),
+        initialScale: .95,
         heightFactor: 1,
         fractionalOffset: Offset(.4, .3),
+        zoomAmt: .1,
         dynamicHzOffset: 150,
       ),
     ];

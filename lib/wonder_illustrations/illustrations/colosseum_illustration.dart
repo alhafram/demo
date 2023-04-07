@@ -1,11 +1,11 @@
 import 'package:demo/assets.dart';
+import 'package:demo/colors.dart';
 import 'package:demo/wonder_illustrations/data/wonder_type.dart';
 import 'package:demo/wonder_illustrations/fade_color_transition.dart';
 import 'package:demo/wonder_illustrations/illustration_piece.dart';
 import 'package:demo/wonder_illustrations/paint_textures.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_builder.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
-import 'package:demo/wonders_color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:sized_context/sized_context.dart';
 
@@ -28,7 +28,8 @@ class ColosseumIllustration extends StatelessWidget {
 
   List<Widget> _buildBg(BuildContext context, Animation<double> anim) {
     return [
-      FadeColorTransition(animation: anim, color: Colors.black),
+      FadeColorTransition(
+          animation: anim, color: AppColors().shift(bgColor, .15)),
       Positioned.fill(
         child: IllustrationTexture(
           ImagePaths.roller1,
@@ -57,6 +58,7 @@ class ColosseumIllustration extends StatelessWidget {
         enableHero: true,
         heightFactor: .6,
         minHeight: 200,
+        zoomAmt: .15,
         fractionalOffset: Offset(0, config.shortMode ? .10 : -.1),
       )
     ];
@@ -67,18 +69,22 @@ class ColosseumIllustration extends StatelessWidget {
       const IllustrationPiece(
         fileName: 'foreground-left.png',
         alignment: Alignment.bottomCenter,
+        initialScale: .9,
         initialOffset: Offset(-40, 60),
         heightFactor: .65,
         offset: Offset.zero,
         fractionalOffset: Offset(-.5, .1),
+        zoomAmt: .05,
         dynamicHzOffset: -150,
       ),
       const IllustrationPiece(
         fileName: 'foreground-right.png',
         alignment: Alignment.bottomCenter,
         initialOffset: Offset(20, 40),
+        initialScale: .95,
         heightFactor: .75,
         fractionalOffset: Offset(.5, .25),
+        zoomAmt: .05,
         dynamicHzOffset: 150,
       ),
     ];

@@ -57,6 +57,7 @@ class MachuPicchuIllustration extends StatelessWidget {
           fileName: 'machu-picchu.png',
           heightFactor: .65,
           minHeight: 230,
+          zoomAmt: config.shortMode ? .1 : -1,
           enableHero: true,
           fractionalOffset: Offset(
               config.shortMode ? 0 : -.05, config.shortMode ? 0.12 : -.12),
@@ -68,9 +69,11 @@ class MachuPicchuIllustration extends StatelessWidget {
       const IllustrationPiece(
         fileName: 'foreground-back.png',
         alignment: Alignment.bottomCenter,
+        initialScale: .9,
         initialOffset: Offset(0, 60),
         heightFactor: .6,
         fractionalOffset: Offset(0, .2),
+        zoomAmt: .05,
         dynamicHzOffset: 150,
       ),
       const IllustrationPiece(
@@ -78,7 +81,9 @@ class MachuPicchuIllustration extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         initialOffset: Offset(20, 40),
         heightFactor: .6,
+        initialScale: 1.2,
         fractionalOffset: Offset(-.35, .4),
+        zoomAmt: .2,
         dynamicHzOffset: -50,
       ),
     ];

@@ -68,6 +68,7 @@ class TajMahalIllustration extends StatelessWidget {
               heightFactor: heightFactor,
               minHeight: minHeight,
               enableHero: true,
+              zoomAmt: .05,
               fractionalOffset: Offset(0, config.shortMode ? .12 : -.15),
               top: config.shortMode
                   ? null
@@ -77,6 +78,7 @@ class TajMahalIllustration extends StatelessWidget {
                           fileName: 'pool.png',
                           heightFactor: heightFactor * poolScale,
                           minHeight: minHeight * poolScale,
+                          zoomAmt: .05,
                         ),
                       ),
             ),
@@ -94,15 +96,19 @@ class TajMahalIllustration extends StatelessWidget {
         fileName: 'foreground-right.png',
         alignment: Alignment.bottomRight,
         initialOffset: const Offset(20, 40),
+        initialScale: .85,
         heightFactor: .5 + .4 * mangoScale,
         fractionalOffset: const Offset(.3, 0),
+        zoomAmt: .25,
       ),
       IllustrationPiece(
         fileName: 'foreground-left.png',
         alignment: Alignment.bottomLeft,
+        initialScale: .9,
         initialOffset: const Offset(-40, 60),
         heightFactor: .6 + .3 * mangoScale,
         fractionalOffset: const Offset(-.3, 0),
+        zoomAmt: .25,
         dynamicHzOffset: 0,
       ),
     ];
