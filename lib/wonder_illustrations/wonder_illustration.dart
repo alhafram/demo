@@ -290,7 +290,58 @@ class WonderIllustration extends StatelessWidget {
                     zoomAmt: .7)));
         return BaseIllustration(illustrationViewModel: vm);
       case SessionType.pyramidsGiza:
-        return PyramidsGizaIllustration(config: config);
+        var vm = IllustrationViewModel(
+            config: config,
+            sessionType: type,
+            backgroundViewModel: IllustrationBackgroundViewModel(
+                color: type.fgColor,
+                illustrationTexturePath: ImagePaths.roller2,
+                illustrationTextureColor: const Color(0xFF797FD8),
+                illustrationTextureFlipY: true,
+                illustrationTextureTweenBegin: 0,
+                illustrationTextureTweenEnd: .75,
+                illustrationTextureScale: config.shortMode ? 4 : 1.15,
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'moon.png',
+                    initialOffset: const Offset(0, 50),
+                    enableHero: true,
+                    heightFactor: .15,
+                    minHeight: 100,
+                    offset: config.shortMode
+                        ? Offset(120, context.heightPx * -.05)
+                        : Offset(120, context.heightPx * -.35),
+                    zoomAmt: .05)),
+            illustrationForegroundViewModel:
+                IllustrationForegroundViewModel(viewModels: [
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-back.png',
+                  alignment: Alignment.bottomCenter,
+                  initialOffset: const Offset(20, 40),
+                  initialScale: .95,
+                  heightFactor: .55,
+                  fractionalOffset: const Offset(.2, -.01),
+                  zoomAmt: .1,
+                  dynamicHzOffset: 150),
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-front.png',
+                  alignment: Alignment.bottomCenter,
+                  initialScale: .9,
+                  initialOffset: const Offset(-40, 60),
+                  heightFactor: .55,
+                  fractionalOffset: const Offset(-.09, 0.02),
+                  zoomAmt: .25,
+                  dynamicHzOffset: -150)
+            ]),
+            middlegroundViewModel: IllustrationMiddlegroundViewModel(
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'pyramids.png',
+                    enableHero: true,
+                    heightFactor: .5,
+                    minHeight: 300,
+                    zoomAmt: config.shortMode ? -.2 : -2,
+                    fractionalOffset: Offset(config.shortMode ? .015 : 0,
+                        config.shortMode ? .17 : -.15))));
+        return BaseIllustration(illustrationViewModel: vm);
       case SessionType.tajMahal:
         return TajMahalIllustration(config: config);
       case SessionType.machuPicchu:
