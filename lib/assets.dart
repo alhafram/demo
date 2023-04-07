@@ -1,4 +1,4 @@
-import 'wonder_illustrations/data/wonder_type.dart';
+import 'wonder_illustrations/illustrations/wonder_type.dart';
 
 /// Consolidates raster image paths used across the app
 class ImagePaths {

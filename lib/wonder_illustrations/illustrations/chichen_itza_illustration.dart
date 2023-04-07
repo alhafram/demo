@@ -1,5 +1,5 @@
 import 'package:demo/assets.dart';
-import 'package:demo/wonder_illustrations/data/wonder_type.dart';
+import 'package:demo/wonder_illustrations/illustrations/wonder_type.dart';
 import 'package:demo/wonder_illustrations/fade_color_transition.dart';
 import 'package:demo/wonder_illustrations/illustration_piece.dart';
 import 'package:demo/wonder_illustrations/paint_textures.dart';
@@ -51,7 +51,7 @@ class ChichenItzaIllustration extends StatelessWidget {
     // We want to size to the shortest side
     return [
       Transform.translate(
-        offset: Offset(0, config.shortMode ? 70 : -30), // TODO: - ADD IT LATER
+        offset: Offset(0, config.shortMode ? 70 : -30),
         child: const IllustrationPiece(
           fileName: 'chichen.png',
           heightFactor: .4,

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'wonder_illustrations/data/wonder_type.dart';
+import 'wonder_illustrations/illustrations/wonder_type.dart';
 
 extension WonderColorExtensions on SessionType {
   Color get bgColor {

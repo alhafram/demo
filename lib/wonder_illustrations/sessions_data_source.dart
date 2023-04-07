@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:demo/assets.dart';
 import 'package:demo/colors.dart';
-import 'package:demo/wonder_illustrations/data/wonder_type.dart';
+import 'package:demo/wonder_illustrations/illustrations/wonder_type.dart';
 import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
 import 'package:flutter/material.dart';

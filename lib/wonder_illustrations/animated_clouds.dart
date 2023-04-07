@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:demo/assets.dart';
 import 'package:demo/wonder_illustrations/context_utils.dart';
-import 'package:demo/wonder_illustrations/data/wonder_type.dart';
+import 'package:demo/wonder_illustrations/illustrations/wonder_type.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:rnd/rnd.dart';

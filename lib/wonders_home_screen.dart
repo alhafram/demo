@@ -6,7 +6,7 @@ import 'package:demo/wonder_illustrations/sessions_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
-import 'wonder_illustrations/data/wonder_type.dart';
+import 'wonder_illustrations/illustrations/wonder_type.dart';
 
 class HomeScreen extends StatefulWidget with GetItStatefulWidgetMixin {
   HomeScreen({Key? key}) : super(key: key);

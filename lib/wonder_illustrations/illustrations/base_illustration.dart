@@ -3,7 +3,6 @@ import 'package:demo/wonder_illustrations/illustration_piece.dart';
 import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
 import 'package:demo/wonder_illustrations/paint_textures.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_builder.dart';
-import 'package:demo/wonders_color_extensions.dart';
 import 'package:flutter/material.dart';
 
 class BaseIllustration extends StatelessWidget {
@@ -23,7 +22,8 @@ class BaseIllustration extends StatelessWidget {
   List<Widget> _buildBg(BuildContext context, Animation<double> anim) {
     return [
       FadeColorTransition(
-          animation: anim, color: illustrationViewModel.sessionType.fgColor),
+          animation: anim,
+          color: illustrationViewModel.backgroundViewModel.color),
       Positioned.fill(
           child: IllustrationTexture.withViewModel(
               viewModel:

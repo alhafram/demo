@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:demo/assets.dart';
-import 'package:demo/wonder_illustrations/data/wonder_type.dart';
+import 'package:demo/wonder_illustrations/illustrations/wonder_type.dart';
 import 'package:demo/wonder_illustrations/fade_color_transition.dart';
 import 'package:demo/wonder_illustrations/illustration_piece.dart';
 import 'package:demo/wonder_illustrations/paint_textures.dart';
