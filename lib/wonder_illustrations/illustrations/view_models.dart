@@ -27,9 +27,11 @@ class IllustrationBackgroundViewModel {
 }
 
 class IllustrationMiddlegroundViewModel {
+  final Offset? offset;
   final IllustrationPieceViewModel illustrationPieceViewModel;
 
-  IllustrationMiddlegroundViewModel({required this.illustrationPieceViewModel});
+  IllustrationMiddlegroundViewModel(
+      {this.offset, required this.illustrationPieceViewModel});
 }
 
 class IllustrationPieceViewModel {

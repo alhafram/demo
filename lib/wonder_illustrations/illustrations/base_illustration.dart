@@ -58,6 +58,23 @@ class BaseIllustration extends StatelessWidget {
   }
 
   List<Widget> _buildMg(BuildContext context, Animation<double> anim) {
+    if (illustrationViewModel.middlegroundViewModel.offset != null) {
+      return [
+        Transform.translate(
+            offset: illustrationViewModel.middlegroundViewModel.offset!,
+            child: IllustrationPiece(
+                fileName: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.fileName,
+                heightFactor: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.heightFactor,
+                minHeight: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.minHeight,
+                zoomAmt: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.zoomAmt,
+                enableHero: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.enableHero))
+      ];
+    }
     return [
       IllustrationPiece(
           fileName: illustrationViewModel
