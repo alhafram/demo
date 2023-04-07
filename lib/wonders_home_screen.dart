@@ -18,7 +18,9 @@ class HomeScreen extends StatefulWidget with GetItStatefulWidgetMixin {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late final PageController _pageController;
-  List<SessionType> get _wonders => SessionDataSource().all;
+  SessionDataSource dataSource = SessionDataSource();
+
+  List<SessionType> get _wonders => dataSource.all;
 
   late int _wonderIndex = 0;
   int get _numWonders => _wonders.length;
@@ -74,13 +76,8 @@ class _HomeScreenState extends State<HomeScreen>
         color: AppColors().black,
         child: Stack(children: [
           Stack(children: [
-            /// Background
             ..._buildBgAndClouds(),
-
-            /// Wonders Illustrations (main content)
             _buildMgPageView(),
-
-            // /// Foreground illustrations and gradients
             _buildFgAndGradients()
           ]).animate().fadeIn()
         ]));
@@ -97,7 +94,9 @@ class _HomeScreenState extends State<HomeScreen>
               bool isShowing = _isSelected(wonderType);
               final config = WonderIllustrationConfig.mg(
                   isShowing: isShowing, zoom: .05 * 1);
-              return WonderIllustration(wonderType, config: config);
+              return WonderIllustration(
+                  viewModel:
+                      dataSource.getViewModelFor(wonderType, config, context));
             }));
   }
 
@@ -105,59 +104,52 @@ class _HomeScreenState extends State<HomeScreen>
     return [
       ..._wonders.map((e) {
         final config = WonderIllustrationConfig.bg(isShowing: _isSelected(e));
-        return WonderIllustration(e, config: config);
+        return WonderIllustration(
+            viewModel: dataSource.getViewModelFor(e, config, context));
       }).toList(),
       FractionallySizedBox(
-        widthFactor: 1,
-        heightFactor: .5,
-        child: AnimatedClouds(wonderType: currentSessionType, opacity: 1),
-      )
+          widthFactor: 1,
+          heightFactor: .5,
+          child: AnimatedClouds(wonderType: currentSessionType, opacity: 1))
     ];
   }
 
   Widget _buildFgAndGradients() {
     Widget buildSwipeableBgGradient(Color fgColor) {
       return IgnorePointer(
-        child: FractionallySizedBox(
-          heightFactor: .6,
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  fgColor.withOpacity(0),
-                  fgColor.withOpacity(.5 + fgColor.opacity * .25 + 1 * .20),
-                ],
-                stops: const [0, 1],
-              ),
-            ),
-          ),
-        ),
-      );
+          child: FractionallySizedBox(
+              heightFactor: .6,
+              child: Container(
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                    fgColor.withOpacity(0),
+                    fgColor.withOpacity(.5 + fgColor.opacity * .25 + 1 * .20)
+                  ],
+                          stops: const [
+                    0,
+                    1
+                  ])))));
     }
 
     final gradientColor = currentSessionType.bgColor;
     return Stack(children: [
-      /// Foreground gradient-1, gets darker when swiping up
       BottomCenter(
-        child: buildSwipeableBgGradient(gradientColor.withOpacity(.65)),
-      ),
-
-      /// Foreground decorators
+          child: buildSwipeableBgGradient(gradientColor.withOpacity(.65))),
       ..._wonders.map((e) {
         final config =
             WonderIllustrationConfig.fg(isShowing: _isSelected(e), zoom: .4);
         return Animate(
             effects: const [FadeEffect()],
             onPlay: _handleFadeAnimInit,
-            child: IgnorePointer(child: WonderIllustration(e, config: config)));
+            child: IgnorePointer(
+                child: WonderIllustration(
+                    viewModel:
+                        dataSource.getViewModelFor(e, config, context))));
       }).toList(),
-
-      /// Foreground gradient-2, gets darker when swiping up
-      BottomCenter(
-        child: buildSwipeableBgGradient(gradientColor),
-      ),
+      BottomCenter(child: buildSwipeableBgGradient(gradientColor))
     ]);
   }
 }
