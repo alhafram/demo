@@ -253,6 +253,7 @@ class SessionDataSource {
                     ImagePaths.roller1,
                     color: const Color(0xffFAE5C8),
                     scale: config.shortMode ? 3.5 : 1.15,
+                    flipX: false,
                     tween: Tween(begin: 0, end: 0.8)),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
                     fileName: 'sun.png',
@@ -404,7 +405,8 @@ class SessionDataSource {
                 color: sessionType.fgColor,
                 textureViewModel: IllustrationTextureViewModel(
                     ImagePaths.roller1,
-                    color: Colors.white,
+                    color: const Color(0xff1E736D),
+                    flipX: false,
                     scale: config.shortMode ? 3 : 1,
                     tween: Tween(begin: 0, end: 0.5)),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
