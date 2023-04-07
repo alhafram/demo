@@ -83,7 +83,7 @@ class WonderIllustration extends StatelessWidget {
             config: config,
             sessionType: type,
             backgroundViewModel: IllustrationBackgroundViewModel(
-                color: AppColors().shift(type.fgColor, .15),
+                color: type.fgColor,
                 illustrationTexturePath: ImagePaths.roller2,
                 illustrationTextureColor: const Color(0xffDC762A),
                 illustrationTextureTweenBegin: 0,
@@ -144,15 +144,62 @@ class WonderIllustration extends StatelessWidget {
             middlegroundViewModel: IllustrationMiddlegroundViewModel(
                 offset: Offset(0, config.shortMode ? 70 : -30),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
-                  fileName: 'chichen.png',
-                  heightFactor: .4,
-                  minHeight: 180,
-                  zoomAmt: -.1,
-                  enableHero: true,
-                )));
+                    fileName: 'chichen.png',
+                    heightFactor: .4,
+                    minHeight: 180,
+                    zoomAmt: -.1,
+                    enableHero: true)));
         return BaseIllustration(illustrationViewModel: vm);
       case SessionType.christRedeemer:
-        return ChristRedeemerIllustration(config: config);
+        var vm = IllustrationViewModel(
+            config: config,
+            sessionType: type,
+            backgroundViewModel: IllustrationBackgroundViewModel(
+                color: type.fgColor,
+                illustrationTexturePath: ImagePaths.roller1,
+                illustrationTextureColor: const Color(0xffFAE5C8),
+                illustrationTextureTweenBegin: 0,
+                illustrationTextureTweenEnd: .8,
+                illustrationTextureScale: config.shortMode ? 3.5 : 1.15,
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'sun.png',
+                    initialOffset: const Offset(0, 50),
+                    enableHero: true,
+                    heightFactor: .25,
+                    minHeight: 120,
+                    fractionalOffset:
+                        Offset(.7, config.shortMode ? -.5 : -1.35))),
+            illustrationForegroundViewModel:
+                IllustrationForegroundViewModel(viewModels: [
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-left.png',
+                  alignment: Alignment.bottomCenter,
+                  initialScale: .95,
+                  initialOffset: const Offset(-140, 60),
+                  heightFactor: .65,
+                  fractionalOffset: const Offset(-.25, .05),
+                  zoomAmt: .15,
+                  dynamicHzOffset: -100),
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-right.png',
+                  alignment: Alignment.bottomCenter,
+                  initialOffset: const Offset(120, 40),
+                  initialScale: .9,
+                  heightFactor: .55,
+                  fractionalOffset: const Offset(.35, .2),
+                  zoomAmt: .1,
+                  dynamicHzOffset: 100)
+            ]),
+            middlegroundViewModel: IllustrationMiddlegroundViewModel(
+                clipBehavior: config.shortMode ? Clip.hardEdge : Clip.none,
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'redeemer.png',
+                    enableHero: true,
+                    heightFactor: 1,
+                    alignment: Alignment.bottomCenter,
+                    fractionalOffset: Offset(0, config.shortMode ? .5 : .1),
+                    zoomAmt: .7)));
+        return BaseIllustration(illustrationViewModel: vm);
       case SessionType.pyramidsGiza:
         return PyramidsGizaIllustration(config: config);
       case SessionType.tajMahal:

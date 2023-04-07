@@ -28,10 +28,14 @@ class IllustrationBackgroundViewModel {
 
 class IllustrationMiddlegroundViewModel {
   final Offset? offset;
+  final Clip? clipBehavior;
+
   final IllustrationPieceViewModel illustrationPieceViewModel;
 
   IllustrationMiddlegroundViewModel(
-      {this.offset, required this.illustrationPieceViewModel});
+      {this.offset,
+      this.clipBehavior,
+      required this.illustrationPieceViewModel});
 }
 
 class IllustrationPieceViewModel {

@@ -41,19 +41,20 @@ class BaseIllustration extends StatelessWidget {
               scale: illustrationViewModel
                   .backgroundViewModel.illustrationTextureScale)),
       IllustrationPiece(
-        fileName: illustrationViewModel
-            .backgroundViewModel.illustrationPieceViewModel.fileName,
-        initialOffset: illustrationViewModel
-            .backgroundViewModel.illustrationPieceViewModel.initialOffset,
-        enableHero: illustrationViewModel
-            .backgroundViewModel.illustrationPieceViewModel.enableHero,
-        heightFactor: illustrationViewModel
-            .backgroundViewModel.illustrationPieceViewModel.heightFactor,
-        minHeight: illustrationViewModel
-            .backgroundViewModel.illustrationPieceViewModel.minHeight,
-        offset: illustrationViewModel
-            .backgroundViewModel.illustrationPieceViewModel.offset,
-      )
+          fileName: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel.fileName,
+          initialOffset: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel.initialOffset,
+          enableHero: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel.enableHero,
+          heightFactor: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel.heightFactor,
+          minHeight: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel.minHeight,
+          offset: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel.offset,
+          fractionalOffset: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel.fractionalOffset)
     ];
   }
 
@@ -72,7 +73,33 @@ class BaseIllustration extends StatelessWidget {
                 zoomAmt: illustrationViewModel
                     .middlegroundViewModel.illustrationPieceViewModel.zoomAmt,
                 enableHero: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.enableHero))
+                    .illustrationPieceViewModel.enableHero,
+                alignment: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.alignment,
+                fractionalOffset: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.fractionalOffset))
+      ];
+    }
+    if (illustrationViewModel.middlegroundViewModel.clipBehavior != null) {
+      return [
+        ClipRect(
+            clipBehavior:
+                illustrationViewModel.middlegroundViewModel.clipBehavior!,
+            child: IllustrationPiece(
+                fileName: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.fileName,
+                heightFactor: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.heightFactor,
+                minHeight: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.minHeight,
+                zoomAmt: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.zoomAmt,
+                enableHero: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.enableHero,
+                alignment: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.alignment,
+                fractionalOffset: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.fractionalOffset))
       ];
     }
     return [
@@ -86,7 +113,11 @@ class BaseIllustration extends StatelessWidget {
           zoomAmt: illustrationViewModel
               .middlegroundViewModel.illustrationPieceViewModel.zoomAmt,
           enableHero: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.enableHero)
+              .middlegroundViewModel.illustrationPieceViewModel.enableHero,
+          alignment: illustrationViewModel
+              .middlegroundViewModel.illustrationPieceViewModel.alignment,
+          fractionalOffset: illustrationViewModel.middlegroundViewModel
+              .illustrationPieceViewModel.fractionalOffset)
     ];
   }
 
