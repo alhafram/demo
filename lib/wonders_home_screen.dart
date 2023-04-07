@@ -1,5 +1,6 @@
 import 'package:demo/colors.dart';
 import 'package:demo/wonder_illustrations/animated_clouds.dart';
+import 'package:demo/wonder_illustrations/illustrations/base_illustration.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
 import 'package:demo/wonder_illustrations/sessions_data_source.dart';
@@ -122,16 +123,14 @@ class _HomeScreenState extends State<HomeScreen>
               child: Container(
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                    fgColor.withOpacity(0),
-                    fgColor.withOpacity(.5 + fgColor.opacity * .25 + 1 * .20)
-                  ],
-                          stops: const [
-                    0,
-                    1
-                  ])))));
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  fgColor.withOpacity(0),
+                  fgColor.withOpacity(.5 + fgColor.opacity * .25)
+                ],
+                stops: const [0, 1],
+              )))));
     }
 
     final gradientColor = currentSessionType.bgColor;
@@ -145,8 +144,8 @@ class _HomeScreenState extends State<HomeScreen>
             effects: const [FadeEffect()],
             onPlay: _handleFadeAnimInit,
             child: IgnorePointer(
-                child: WonderIllustration(
-                    viewModel:
+                child: BaseIllustration(
+                    illustrationViewModel:
                         dataSource.getViewModelFor(e, config, context))));
       }).toList(),
       BottomCenter(child: buildSwipeableBgGradient(gradientColor))
