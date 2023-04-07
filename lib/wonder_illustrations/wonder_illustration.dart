@@ -2,8 +2,6 @@ import 'package:demo/assets.dart';
 import 'package:demo/colors.dart';
 import 'package:demo/wonder_illustrations/data/wonder_type.dart';
 import 'package:demo/wonder_illustrations/illustrations/base_illustration.dart';
-import 'package:demo/wonder_illustrations/illustrations/christ_redeemer_illustration.dart';
-import 'package:demo/wonder_illustrations/illustrations/colosseum_illustration.dart';
 import 'package:demo/wonder_illustrations/illustrations/machu_picchu_illustration.dart';
 import 'package:demo/wonder_illustrations/illustrations/petra_illustration.dart';
 import 'package:demo/wonder_illustrations/illustrations/pyramids_giza_illustration.dart';
@@ -77,7 +75,57 @@ class WonderIllustration extends StatelessWidget {
       case SessionType.petra:
         return PetraIllustration(config: config);
       case SessionType.colosseum:
-        return ColosseumIllustration(config: config);
+        var vm = IllustrationViewModel(
+            config: config,
+            sessionType: type,
+            backgroundViewModel: IllustrationBackgroundViewModel(
+                color: AppColors().shift(type.bgColor, .15),
+                illustrationTexturePath: ImagePaths.roller1,
+                illustrationTextureColor: Colors.white,
+                illustrationTextureTweenBegin: 0,
+                illustrationTextureTweenEnd: .75,
+                illustrationTextureScale: config.shortMode ? 3 : 1,
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'sun.png',
+                    initialOffset: const Offset(0, 50),
+                    enableHero: true,
+                    heightFactor: config.shortMode ? .25 : .25,
+                    minHeight: 100,
+                    offset: config.shortMode
+                        ? Offset(50, context.heightPx * -.07)
+                        : Offset(80, context.heightPx * -.28))),
+            illustrationForegroundViewModel:
+                IllustrationForegroundViewModel(viewModels: [
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-left.png',
+                  alignment: Alignment.bottomCenter,
+                  initialScale: .9,
+                  initialOffset: const Offset(-40, 60),
+                  heightFactor: .65,
+                  offset: Offset.zero,
+                  fractionalOffset: const Offset(-.5, .1),
+                  zoomAmt: .05,
+                  dynamicHzOffset: -150),
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-right.png',
+                  alignment: Alignment.bottomCenter,
+                  initialOffset: const Offset(20, 40),
+                  initialScale: .95,
+                  heightFactor: .75,
+                  fractionalOffset: const Offset(.5, .25),
+                  zoomAmt: .05,
+                  dynamicHzOffset: 150)
+            ]),
+            middlegroundViewModel: IllustrationMiddlegroundViewModel(
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'colosseum.png',
+                    enableHero: true,
+                    heightFactor: .6,
+                    minHeight: 200,
+                    zoomAmt: .15,
+                    fractionalOffset:
+                        Offset(0, config.shortMode ? .10 : -.1))));
+        return BaseIllustration(illustrationViewModel: vm);
       case SessionType.chichenItza:
         var vm = IllustrationViewModel(
             config: config,
@@ -91,55 +139,51 @@ class WonderIllustration extends StatelessWidget {
                 illustrationTextureFlipY: true,
                 illustrationTextureScale: config.shortMode ? 4 : 1.15,
                 illustrationPieceViewModel: IllustrationPieceViewModel(
-                  fileName: 'sun.png',
-                  initialOffset: const Offset(0, 50),
-                  enableHero: true,
-                  heightFactor: .4,
-                  minHeight: 200,
-                  fractionalOffset: Offset(.55, config.shortMode ? .2 : -.35),
-                )),
+                    fileName: 'sun.png',
+                    initialOffset: const Offset(0, 50),
+                    enableHero: true,
+                    heightFactor: .4,
+                    minHeight: 200,
+                    fractionalOffset:
+                        Offset(.55, config.shortMode ? .2 : -.35))),
             illustrationForegroundViewModel:
                 IllustrationForegroundViewModel(viewModels: [
               IllustrationPieceViewModel(
-                fileName: 'foreground-right.png',
-                alignment: Alignment.bottomCenter,
-                initialOffset: const Offset(20, 40),
-                initialScale: .95,
-                heightFactor: .4,
-                fractionalOffset: const Offset(.5, -.1),
-                zoomAmt: .1,
-                dynamicHzOffset: 250,
-              ),
+                  fileName: 'foreground-right.png',
+                  alignment: Alignment.bottomCenter,
+                  initialOffset: const Offset(20, 40),
+                  initialScale: .95,
+                  heightFactor: .4,
+                  fractionalOffset: const Offset(.5, -.1),
+                  zoomAmt: .1,
+                  dynamicHzOffset: 250),
               IllustrationPieceViewModel(
-                fileName: 'foreground-left.png',
-                alignment: Alignment.bottomCenter,
-                initialScale: .9,
-                initialOffset: const Offset(-40, 60),
-                heightFactor: .65,
-                fractionalOffset: const Offset(-.4, .2),
-                zoomAmt: .25,
-                dynamicHzOffset: -250,
-              ),
+                  fileName: 'foreground-left.png',
+                  alignment: Alignment.bottomCenter,
+                  initialScale: .9,
+                  initialOffset: const Offset(-40, 60),
+                  heightFactor: .65,
+                  fractionalOffset: const Offset(-.4, .2),
+                  zoomAmt: .25,
+                  dynamicHzOffset: -250),
               IllustrationPieceViewModel(
-                fileName: 'top-left.png',
-                alignment: Alignment.topLeft,
-                initialScale: .9,
-                initialOffset: const Offset(-40, 60),
-                heightFactor: .65,
-                fractionalOffset: const Offset(-.4, -.4),
-                zoomAmt: .05,
-                dynamicHzOffset: 100,
-              ),
+                  fileName: 'top-left.png',
+                  alignment: Alignment.topLeft,
+                  initialScale: .9,
+                  initialOffset: const Offset(-40, 60),
+                  heightFactor: .65,
+                  fractionalOffset: const Offset(-.4, -.4),
+                  zoomAmt: .05,
+                  dynamicHzOffset: 100),
               IllustrationPieceViewModel(
-                fileName: 'top-right.png',
-                alignment: Alignment.topRight,
-                initialOffset: const Offset(20, 40),
-                initialScale: .95,
-                heightFactor: .65,
-                fractionalOffset: const Offset(.35, -.4),
-                zoomAmt: .05,
-                dynamicHzOffset: -100,
-              )
+                  fileName: 'top-right.png',
+                  alignment: Alignment.topRight,
+                  initialOffset: const Offset(20, 40),
+                  initialScale: .95,
+                  heightFactor: .65,
+                  fractionalOffset: const Offset(.35, -.4),
+                  zoomAmt: .05,
+                  dynamicHzOffset: -100)
             ]),
             middlegroundViewModel: IllustrationMiddlegroundViewModel(
                 offset: Offset(0, config.shortMode ? 70 : -30),
