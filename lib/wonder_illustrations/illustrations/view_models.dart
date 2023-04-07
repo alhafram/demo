@@ -24,14 +24,10 @@ class IllustrationBackgroundViewModel {
 
 class IllustrationMiddlegroundViewModel {
   final Offset offset;
-  final String fileName;
-  final double heightFactor;
-  final double minHeight;
-  final double zoomAmt;
-  final bool enableHero;
+  final IllustrationPieceViewModel illustrationPieceViewModel;
 
-  IllustrationMiddlegroundViewModel(this.offset, this.fileName,
-      this.heightFactor, this.minHeight, this.zoomAmt, this.enableHero);
+  IllustrationMiddlegroundViewModel(
+      this.offset, this.illustrationPieceViewModel);
 }
 
 class IllustrationPieceViewModel {
@@ -40,7 +36,7 @@ class IllustrationPieceViewModel {
   final Offset initialOffset;
   final double initialScale;
   final double heightFactor;
-  final double fractionalOffset;
+  final Offset fractionalOffset;
   final double zoomAmt;
   final double dynamicHzOffset;
   final double minHeight;
