@@ -249,7 +249,56 @@ class WonderIllustration extends StatelessWidget {
       case SessionType.tajMahal:
         return TajMahalIllustration(config: config);
       case SessionType.machuPicchu:
-        return MachuPicchuIllustration(config: config);
+        var vm = IllustrationViewModel(
+            config: config,
+            sessionType: type,
+            backgroundViewModel: IllustrationBackgroundViewModel(
+                color: type.fgColor,
+                illustrationTexturePath: ImagePaths.roller1,
+                illustrationTextureColor: Colors.white,
+                illustrationTextureTweenBegin: 0,
+                illustrationTextureTweenEnd: .5,
+                illustrationTextureScale: config.shortMode ? 3 : 1,
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'sun.png',
+                    initialOffset: const Offset(0, 50),
+                    enableHero: true,
+                    heightFactor: config.shortMode ? .15 : .15,
+                    minHeight: 100,
+                    offset: config.shortMode
+                        ? Offset(150, context.heightPx * -.08)
+                        : Offset(150, context.heightPx * -.35))),
+            illustrationForegroundViewModel:
+                IllustrationForegroundViewModel(viewModels: [
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-back.png',
+                  alignment: Alignment.bottomCenter,
+                  initialScale: .9,
+                  initialOffset: const Offset(0, 60),
+                  heightFactor: .6,
+                  fractionalOffset: const Offset(0, .2),
+                  zoomAmt: .05,
+                  dynamicHzOffset: 150),
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-front.png',
+                  alignment: Alignment.bottomCenter,
+                  initialOffset: const Offset(20, 40),
+                  heightFactor: .6,
+                  initialScale: 1.2,
+                  fractionalOffset: const Offset(-.35, .4),
+                  zoomAmt: .2,
+                  dynamicHzOffset: -50)
+            ]),
+            middlegroundViewModel: IllustrationMiddlegroundViewModel(
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'machu-picchu.png',
+                    heightFactor: .65,
+                    minHeight: 230,
+                    zoomAmt: config.shortMode ? .1 : -1,
+                    enableHero: true,
+                    fractionalOffset: Offset(config.shortMode ? 0 : -.05,
+                        config.shortMode ? 0.12 : -.12))));
+        return BaseIllustration(illustrationViewModel: vm);
     }
   }
 }
