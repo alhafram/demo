@@ -27,14 +27,20 @@ class IllustrationBackgroundViewModel {
 }
 
 class IllustrationMiddlegroundViewModel {
-  final Offset? offset;
-  final Clip? clipBehavior;
+  final Offset? offset; // Translate
+
+  final Clip? clipBehavior; // ClipRect
+
+  final double? heightFactor; // FractionallySizedBox
+  final Alignment? alignment;
 
   final IllustrationPieceViewModel illustrationPieceViewModel;
 
   IllustrationMiddlegroundViewModel(
       {this.offset,
       this.clipBehavior,
+      this.heightFactor,
+      this.alignment,
       required this.illustrationPieceViewModel});
 }
 
@@ -50,8 +56,8 @@ class IllustrationPieceViewModel {
   final double? minHeight;
   final Offset offset;
   final bool enableHero;
-  final Widget? top;
-  final Widget? bottom;
+  final Widget Function(BuildContext context)? top;
+  final Widget Function(BuildContext context)? bottom;
 
   IllustrationPieceViewModel({
     required this.fileName,

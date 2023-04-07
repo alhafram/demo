@@ -2,8 +2,6 @@ import 'package:demo/assets.dart';
 import 'package:demo/colors.dart';
 import 'package:demo/wonder_illustrations/data/wonder_type.dart';
 import 'package:demo/wonder_illustrations/illustrations/base_illustration.dart';
-import 'package:demo/wonder_illustrations/illustrations/machu_picchu_illustration.dart';
-import 'package:demo/wonder_illustrations/illustrations/petra_illustration.dart';
 import 'package:demo/wonder_illustrations/illustrations/pyramids_giza_illustration.dart';
 import 'package:demo/wonder_illustrations/illustrations/taj_mahal_illustration.dart';
 import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
@@ -73,7 +71,54 @@ class WonderIllustration extends StatelessWidget {
                         Offset(0, config.shortMode ? .15 : -.15))));
         return BaseIllustration(illustrationViewModel: vm);
       case SessionType.petra:
-        return PetraIllustration(config: config);
+        var vm = IllustrationViewModel(
+            config: config,
+            sessionType: type,
+            backgroundViewModel: IllustrationBackgroundViewModel(
+                color: type.fgColor,
+                illustrationTexturePath: ImagePaths.roller1,
+                illustrationTextureColor: type.bgColor,
+                illustrationTextureFlipX: true,
+                illustrationTextureTweenBegin: 0,
+                illustrationTextureTweenEnd: 1,
+                illustrationTextureScale: config.shortMode ? 4 : 1.15,
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'moon.png',
+                    initialOffset: const Offset(0, -150),
+                    heightFactor: .15,
+                    minHeight: 50,
+                    alignment: Alignment.topCenter,
+                    fractionalOffset: const Offset(-.7, 0))),
+            illustrationForegroundViewModel:
+                IllustrationForegroundViewModel(viewModels: [
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-left.png',
+                  alignment: Alignment.bottomCenter,
+                  initialOffset: const Offset(-80, 0),
+                  heightFactor: 1,
+                  fractionalOffset: const Offset(-.6, 0),
+                  zoomAmt: .03,
+                  dynamicHzOffset: -130),
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-right.png',
+                  alignment: Alignment.bottomCenter,
+                  initialOffset: const Offset(80, 00),
+                  heightFactor: 1,
+                  fractionalOffset: const Offset(.55, 0),
+                  zoomAmt: .12,
+                  dynamicHzOffset: 130)
+            ]),
+            middlegroundViewModel: IllustrationMiddlegroundViewModel(
+                heightFactor: config.shortMode ? 1 : .8,
+                alignment: Alignment.bottomCenter,
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'petra.png',
+                    heightFactor: .65,
+                    minHeight: 500,
+                    zoomAmt: config.shortMode ? -0.1 : -1,
+                    enableHero: true,
+                    fractionalOffset: Offset(0, config.shortMode ? .025 : 0))));
+        return BaseIllustration(illustrationViewModel: vm);
       case SessionType.colosseum:
         var vm = IllustrationViewModel(
             config: config,

@@ -54,7 +54,13 @@ class BaseIllustration extends StatelessWidget {
           offset: illustrationViewModel
               .backgroundViewModel.illustrationPieceViewModel.offset,
           fractionalOffset: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.fractionalOffset)
+              .backgroundViewModel.illustrationPieceViewModel.fractionalOffset,
+          alignment: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel.alignment,
+          initialScale: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel.initialScale,
+          dynamicHzOffset: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel.dynamicHzOffset)
     ];
   }
 
@@ -66,18 +72,23 @@ class BaseIllustration extends StatelessWidget {
             child: IllustrationPiece(
                 fileName: illustrationViewModel
                     .middlegroundViewModel.illustrationPieceViewModel.fileName,
+                initialOffset: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.initialOffset,
+                enableHero: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.enableHero,
                 heightFactor: illustrationViewModel.middlegroundViewModel
                     .illustrationPieceViewModel.heightFactor,
                 minHeight: illustrationViewModel
                     .middlegroundViewModel.illustrationPieceViewModel.minHeight,
-                zoomAmt: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.zoomAmt,
-                enableHero: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.enableHero,
+                offset: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.offset,
+                fractionalOffset: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.fractionalOffset,
                 alignment: illustrationViewModel
                     .middlegroundViewModel.illustrationPieceViewModel.alignment,
-                fractionalOffset: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.fractionalOffset))
+                initialScale:
+                    illustrationViewModel.middlegroundViewModel.illustrationPieceViewModel.initialScale,
+                dynamicHzOffset: illustrationViewModel.middlegroundViewModel.illustrationPieceViewModel.dynamicHzOffset))
       ];
     }
     if (illustrationViewModel.middlegroundViewModel.clipBehavior != null) {
@@ -88,36 +99,76 @@ class BaseIllustration extends StatelessWidget {
             child: IllustrationPiece(
                 fileName: illustrationViewModel
                     .middlegroundViewModel.illustrationPieceViewModel.fileName,
+                initialOffset: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.initialOffset,
+                enableHero: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.enableHero,
                 heightFactor: illustrationViewModel.middlegroundViewModel
                     .illustrationPieceViewModel.heightFactor,
                 minHeight: illustrationViewModel
                     .middlegroundViewModel.illustrationPieceViewModel.minHeight,
-                zoomAmt: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.zoomAmt,
-                enableHero: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.enableHero,
+                offset: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.offset,
+                fractionalOffset: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.fractionalOffset,
                 alignment: illustrationViewModel
                     .middlegroundViewModel.illustrationPieceViewModel.alignment,
+                initialScale: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.initialScale,
+                dynamicHzOffset: illustrationViewModel.middlegroundViewModel.illustrationPieceViewModel.dynamicHzOffset))
+      ];
+    }
+    if (illustrationViewModel.middlegroundViewModel.heightFactor != null &&
+        illustrationViewModel.middlegroundViewModel.alignment != null) {
+      return [
+        FractionallySizedBox(
+            heightFactor:
+                illustrationViewModel.middlegroundViewModel.heightFactor!,
+            alignment: illustrationViewModel.middlegroundViewModel.alignment!,
+            child: IllustrationPiece(
+                fileName: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.fileName,
+                initialOffset: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.initialOffset,
+                enableHero: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.enableHero,
+                heightFactor: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.heightFactor,
+                minHeight: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.minHeight,
+                offset: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.offset,
                 fractionalOffset: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.fractionalOffset))
+                    .illustrationPieceViewModel.fractionalOffset,
+                alignment: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel.alignment,
+                initialScale: illustrationViewModel.middlegroundViewModel
+                    .illustrationPieceViewModel.initialScale,
+                dynamicHzOffset: illustrationViewModel.middlegroundViewModel.illustrationPieceViewModel.dynamicHzOffset))
       ];
     }
     return [
       IllustrationPiece(
           fileName: illustrationViewModel
               .middlegroundViewModel.illustrationPieceViewModel.fileName,
+          initialOffset: illustrationViewModel
+              .middlegroundViewModel.illustrationPieceViewModel.initialOffset,
+          enableHero: illustrationViewModel
+              .middlegroundViewModel.illustrationPieceViewModel.enableHero,
           heightFactor: illustrationViewModel
               .middlegroundViewModel.illustrationPieceViewModel.heightFactor,
           minHeight: illustrationViewModel
               .middlegroundViewModel.illustrationPieceViewModel.minHeight,
-          zoomAmt: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.zoomAmt,
-          enableHero: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.enableHero,
+          offset: illustrationViewModel
+              .middlegroundViewModel.illustrationPieceViewModel.offset,
+          fractionalOffset: illustrationViewModel.middlegroundViewModel
+              .illustrationPieceViewModel.fractionalOffset,
           alignment: illustrationViewModel
               .middlegroundViewModel.illustrationPieceViewModel.alignment,
-          fractionalOffset: illustrationViewModel.middlegroundViewModel
-              .illustrationPieceViewModel.fractionalOffset)
+          initialScale: illustrationViewModel
+              .middlegroundViewModel.illustrationPieceViewModel.initialScale,
+          dynamicHzOffset: illustrationViewModel
+              .middlegroundViewModel.illustrationPieceViewModel.dynamicHzOffset)
     ];
   }
 
@@ -129,6 +180,9 @@ class BaseIllustration extends StatelessWidget {
           fileName: viewModel.fileName,
           alignment: viewModel.alignment,
           initialOffset: viewModel.initialOffset,
+          enableHero: viewModel.enableHero,
+          minHeight: viewModel.minHeight,
+          offset: viewModel.offset,
           initialScale: viewModel.initialScale,
           heightFactor: viewModel.heightFactor,
           fractionalOffset: viewModel.fractionalOffset,

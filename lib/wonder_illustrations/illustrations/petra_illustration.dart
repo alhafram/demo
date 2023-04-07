@@ -75,6 +75,7 @@ class PetraIllustration extends StatelessWidget {
         zoomAmt: .03,
         dynamicHzOffset: -130,
         bottom: (_) {
+          // TODO: - IDK HOW TO ADD IT
           /// To cover everything behind this piece with a solid color, we scale up a container
           /// and then offset it in negative space
           const double scaleX = 5;
