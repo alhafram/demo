@@ -1,3 +1,4 @@
+import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
 import 'package:flutter/material.dart';
 
 class IllustrationTexture extends StatelessWidget {
@@ -15,6 +16,17 @@ class IllustrationTexture extends StatelessWidget {
   final bool flipY;
   final String path;
   final Animation<double>? opacity;
+
+  factory IllustrationTexture.withViewModel(
+      {required IllustrationTextureViewModel viewModel,
+      required Animation<double> opacity}) {
+    return IllustrationTexture(viewModel.path,
+        scale: viewModel.scale,
+        color: viewModel.color,
+        flipX: viewModel.flipX,
+        flipY: viewModel.flipY,
+        opacity: opacity);
+  }
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(

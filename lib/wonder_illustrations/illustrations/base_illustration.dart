@@ -25,42 +25,14 @@ class BaseIllustration extends StatelessWidget {
       FadeColorTransition(
           animation: anim, color: illustrationViewModel.sessionType.fgColor),
       Positioned.fill(
-          child: IllustrationTexture(
-              illustrationViewModel.backgroundViewModel.illustrationTexturePath,
-              color: illustrationViewModel
-                  .backgroundViewModel.illustrationTextureColor,
-              opacity: anim.drive(Tween(
-                  begin: illustrationViewModel
-                      .backgroundViewModel.illustrationTextureTweenBegin,
-                  end: illustrationViewModel
-                      .backgroundViewModel.illustrationTextureTweenEnd)),
-              flipY: illustrationViewModel
-                  .backgroundViewModel.illustrationTextureFlipY,
-              flipX: illustrationViewModel
-                  .backgroundViewModel.illustrationTextureFlipX,
-              scale: illustrationViewModel
-                  .backgroundViewModel.illustrationTextureScale)),
-      IllustrationPiece(
-          fileName: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.fileName,
-          initialOffset: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.initialOffset,
-          enableHero: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.enableHero,
-          heightFactor: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.heightFactor,
-          minHeight: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.minHeight,
-          offset: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.offset,
-          fractionalOffset: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.fractionalOffset,
-          alignment: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.alignment,
-          initialScale: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.initialScale,
-          dynamicHzOffset: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel.dynamicHzOffset)
+          child: IllustrationTexture.withViewModel(
+              viewModel:
+                  illustrationViewModel.backgroundViewModel.textureViewModel,
+              opacity: anim.drive(illustrationViewModel
+                  .backgroundViewModel.textureViewModel.tween))),
+      IllustrationPiece.withViewModel(
+          viewModel: illustrationViewModel
+              .backgroundViewModel.illustrationPieceViewModel)
     ];
   }
 
@@ -69,26 +41,9 @@ class BaseIllustration extends StatelessWidget {
       return [
         Transform.translate(
             offset: illustrationViewModel.middlegroundViewModel.offset!,
-            child: IllustrationPiece(
-                fileName: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.fileName,
-                initialOffset: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.initialOffset,
-                enableHero: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.enableHero,
-                heightFactor: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.heightFactor,
-                minHeight: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.minHeight,
-                offset: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.offset,
-                fractionalOffset: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.fractionalOffset,
-                alignment: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.alignment,
-                initialScale:
-                    illustrationViewModel.middlegroundViewModel.illustrationPieceViewModel.initialScale,
-                dynamicHzOffset: illustrationViewModel.middlegroundViewModel.illustrationPieceViewModel.dynamicHzOffset))
+            child: IllustrationPiece.withViewModel(
+                viewModel: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel))
       ];
     }
     if (illustrationViewModel.middlegroundViewModel.clipBehavior != null) {
@@ -96,26 +51,9 @@ class BaseIllustration extends StatelessWidget {
         ClipRect(
             clipBehavior:
                 illustrationViewModel.middlegroundViewModel.clipBehavior!,
-            child: IllustrationPiece(
-                fileName: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.fileName,
-                initialOffset: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.initialOffset,
-                enableHero: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.enableHero,
-                heightFactor: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.heightFactor,
-                minHeight: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.minHeight,
-                offset: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.offset,
-                fractionalOffset: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.fractionalOffset,
-                alignment: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.alignment,
-                initialScale: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.initialScale,
-                dynamicHzOffset: illustrationViewModel.middlegroundViewModel.illustrationPieceViewModel.dynamicHzOffset))
+            child: IllustrationPiece.withViewModel(
+                viewModel: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel))
       ];
     }
     if (illustrationViewModel.middlegroundViewModel.heightFactor != null &&
@@ -125,50 +63,15 @@ class BaseIllustration extends StatelessWidget {
             heightFactor:
                 illustrationViewModel.middlegroundViewModel.heightFactor!,
             alignment: illustrationViewModel.middlegroundViewModel.alignment!,
-            child: IllustrationPiece(
-                fileName: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.fileName,
-                initialOffset: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.initialOffset,
-                enableHero: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.enableHero,
-                heightFactor: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.heightFactor,
-                minHeight: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.minHeight,
-                offset: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.offset,
-                fractionalOffset: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.fractionalOffset,
-                alignment: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel.alignment,
-                initialScale: illustrationViewModel.middlegroundViewModel
-                    .illustrationPieceViewModel.initialScale,
-                dynamicHzOffset: illustrationViewModel.middlegroundViewModel.illustrationPieceViewModel.dynamicHzOffset))
+            child: IllustrationPiece.withViewModel(
+                viewModel: illustrationViewModel
+                    .middlegroundViewModel.illustrationPieceViewModel))
       ];
     }
     return [
-      IllustrationPiece(
-          fileName: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.fileName,
-          initialOffset: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.initialOffset,
-          enableHero: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.enableHero,
-          heightFactor: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.heightFactor,
-          minHeight: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.minHeight,
-          offset: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.offset,
-          fractionalOffset: illustrationViewModel.middlegroundViewModel
-              .illustrationPieceViewModel.fractionalOffset,
-          alignment: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.alignment,
-          initialScale: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.initialScale,
-          dynamicHzOffset: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel.dynamicHzOffset)
+      IllustrationPiece.withViewModel(
+          viewModel: illustrationViewModel
+              .middlegroundViewModel.illustrationPieceViewModel)
     ];
   }
 
@@ -176,18 +79,7 @@ class BaseIllustration extends StatelessWidget {
     var list = List<Widget>.empty(growable: true);
     for (var viewModel
         in illustrationViewModel.illustrationForegroundViewModel.viewModels) {
-      list.add(IllustrationPiece(
-          fileName: viewModel.fileName,
-          alignment: viewModel.alignment,
-          initialOffset: viewModel.initialOffset,
-          enableHero: viewModel.enableHero,
-          minHeight: viewModel.minHeight,
-          offset: viewModel.offset,
-          initialScale: viewModel.initialScale,
-          heightFactor: viewModel.heightFactor,
-          fractionalOffset: viewModel.fractionalOffset,
-          zoomAmt: viewModel.zoomAmt,
-          dynamicHzOffset: viewModel.dynamicHzOffset));
+      list.add(IllustrationPiece.withViewModel(viewModel: viewModel));
     }
     return list;
   }

@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui' as ui;
 import 'package:demo/assets.dart';
+import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -26,6 +27,24 @@ class IllustrationPiece extends StatefulWidget {
     this.top,
     this.bottom,
   }) : super(key: key);
+
+  factory IllustrationPiece.withViewModel(
+      {required IllustrationPieceViewModel viewModel}) {
+    return IllustrationPiece(
+        fileName: viewModel.fileName,
+        heightFactor: viewModel.heightFactor,
+        alignment: viewModel.alignment,
+        minHeight: viewModel.minHeight,
+        offset: viewModel.offset,
+        fractionalOffset: viewModel.fractionalOffset,
+        zoomAmt: viewModel.zoomAmt,
+        initialOffset: viewModel.initialOffset,
+        enableHero: viewModel.enableHero,
+        initialScale: viewModel.initialScale,
+        dynamicHzOffset: viewModel.dynamicHzOffset,
+        top: null,
+        bottom: null);
+  }
 
   final String fileName;
 

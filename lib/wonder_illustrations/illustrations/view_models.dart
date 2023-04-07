@@ -4,25 +4,13 @@ import 'package:flutter/material.dart';
 
 class IllustrationBackgroundViewModel {
   final Color color;
-  final String illustrationTexturePath;
-  final Color? illustrationTextureColor;
-  final double illustrationTextureTweenBegin;
-  final double illustrationTextureTweenEnd;
-  final bool illustrationTextureFlipY;
-  final bool illustrationTextureFlipX;
-  final double illustrationTextureScale;
 
+  final IllustrationTextureViewModel textureViewModel;
   final IllustrationPieceViewModel illustrationPieceViewModel;
 
   IllustrationBackgroundViewModel(
       {required this.color,
-      required this.illustrationTexturePath,
-      this.illustrationTextureColor,
-      required this.illustrationTextureTweenBegin,
-      required this.illustrationTextureTweenEnd,
-      this.illustrationTextureFlipY = false,
-      this.illustrationTextureFlipX = false,
-      this.illustrationTextureScale = 1,
+      required this.textureViewModel,
       required this.illustrationPieceViewModel});
 }
 
@@ -80,6 +68,22 @@ class IllustrationForegroundViewModel {
   final List<IllustrationPieceViewModel> viewModels;
 
   IllustrationForegroundViewModel({required this.viewModels});
+}
+
+class IllustrationTextureViewModel {
+  final Color? color;
+  final double scale;
+  final bool flipX;
+  final bool flipY;
+  final String path;
+  final Tween<double> tween;
+
+  IllustrationTextureViewModel(this.path,
+      {this.scale = 1,
+      this.color,
+      this.flipX = false,
+      this.flipY = false,
+      required this.tween});
 }
 
 class IllustrationViewModel {

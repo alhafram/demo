@@ -23,12 +23,12 @@ class WonderIllustration extends StatelessWidget {
             sessionType: type,
             backgroundViewModel: IllustrationBackgroundViewModel(
                 color: AppColors().shift(type.fgColor, .15),
-                illustrationTexturePath: ImagePaths.roller2,
-                illustrationTextureColor: const Color(0xff688750),
-                illustrationTextureTweenBegin: 0,
-                illustrationTextureTweenEnd: 1,
-                illustrationTextureFlipX: true,
-                illustrationTextureScale: config.shortMode ? 4 : 1.15,
+                textureViewModel: IllustrationTextureViewModel(
+                    ImagePaths.roller2,
+                    color: const Color(0xff688750),
+                    flipX: true,
+                    scale: config.shortMode ? 4 : 1.15,
+                    tween: Tween(begin: 0, end: 1)),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
                     fileName: 'sun.png',
                     initialOffset: const Offset(0, 50),
@@ -69,18 +69,19 @@ class WonderIllustration extends StatelessWidget {
                     fractionalOffset:
                         Offset(0, config.shortMode ? .15 : -.15))));
         return BaseIllustration(illustrationViewModel: vm);
+      // return GreatWallIllustration(config: config);
       case SessionType.petra:
         var vm = IllustrationViewModel(
             config: config,
             sessionType: type,
             backgroundViewModel: IllustrationBackgroundViewModel(
                 color: type.fgColor,
-                illustrationTexturePath: ImagePaths.roller1,
-                illustrationTextureColor: type.bgColor,
-                illustrationTextureFlipX: true,
-                illustrationTextureTweenBegin: 0,
-                illustrationTextureTweenEnd: 1,
-                illustrationTextureScale: config.shortMode ? 4 : 1.15,
+                textureViewModel: IllustrationTextureViewModel(
+                    ImagePaths.roller1,
+                    color: type.bgColor,
+                    flipX: true,
+                    scale: config.shortMode ? 4 : 1.15,
+                    tween: Tween(begin: 0, end: 1)),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
                     fileName: 'moon.png',
                     initialOffset: const Offset(0, -150),
@@ -124,11 +125,11 @@ class WonderIllustration extends StatelessWidget {
             sessionType: type,
             backgroundViewModel: IllustrationBackgroundViewModel(
                 color: AppColors().shift(type.bgColor, .15),
-                illustrationTexturePath: ImagePaths.roller1,
-                illustrationTextureColor: Colors.white,
-                illustrationTextureTweenBegin: 0,
-                illustrationTextureTweenEnd: .75,
-                illustrationTextureScale: config.shortMode ? 3 : 1,
+                textureViewModel: IllustrationTextureViewModel(
+                    ImagePaths.roller1,
+                    color: Colors.white,
+                    scale: config.shortMode ? 3 : 1,
+                    tween: Tween(begin: 0, end: 0.75)),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
                     fileName: 'sun.png',
                     initialOffset: const Offset(0, 50),
@@ -176,12 +177,12 @@ class WonderIllustration extends StatelessWidget {
             sessionType: type,
             backgroundViewModel: IllustrationBackgroundViewModel(
                 color: type.fgColor,
-                illustrationTexturePath: ImagePaths.roller2,
-                illustrationTextureColor: const Color(0xffDC762A),
-                illustrationTextureTweenBegin: 0,
-                illustrationTextureTweenEnd: .5,
-                illustrationTextureFlipY: true,
-                illustrationTextureScale: config.shortMode ? 4 : 1.15,
+                textureViewModel: IllustrationTextureViewModel(
+                    ImagePaths.roller2,
+                    color: const Color(0xffDC762A),
+                    scale: config.shortMode ? 4 : 1.15,
+                    flipY: true,
+                    tween: Tween(begin: 0, end: 0.5)),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
                     fileName: 'sun.png',
                     initialOffset: const Offset(0, 50),
@@ -244,11 +245,11 @@ class WonderIllustration extends StatelessWidget {
             sessionType: type,
             backgroundViewModel: IllustrationBackgroundViewModel(
                 color: type.fgColor,
-                illustrationTexturePath: ImagePaths.roller1,
-                illustrationTextureColor: const Color(0xffFAE5C8),
-                illustrationTextureTweenBegin: 0,
-                illustrationTextureTweenEnd: .8,
-                illustrationTextureScale: config.shortMode ? 3.5 : 1.15,
+                textureViewModel: IllustrationTextureViewModel(
+                    ImagePaths.roller1,
+                    color: const Color(0xffFAE5C8),
+                    scale: config.shortMode ? 3.5 : 1.15,
+                    tween: Tween(begin: 0, end: 0.8)),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
                     fileName: 'sun.png',
                     initialOffset: const Offset(0, 50),
@@ -294,12 +295,12 @@ class WonderIllustration extends StatelessWidget {
             sessionType: type,
             backgroundViewModel: IllustrationBackgroundViewModel(
                 color: type.fgColor,
-                illustrationTexturePath: ImagePaths.roller2,
-                illustrationTextureColor: const Color(0xFF797FD8),
-                illustrationTextureFlipY: true,
-                illustrationTextureTweenBegin: 0,
-                illustrationTextureTweenEnd: .75,
-                illustrationTextureScale: config.shortMode ? 4 : 1.15,
+                textureViewModel: IllustrationTextureViewModel(
+                    ImagePaths.roller2,
+                    color: const Color(0xFF797FD8),
+                    scale: config.shortMode ? 4 : 1.15,
+                    flipY: true,
+                    tween: Tween(begin: 0, end: 0.75)),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
                     fileName: 'moon.png',
                     initialOffset: const Offset(0, 50),
@@ -349,12 +350,12 @@ class WonderIllustration extends StatelessWidget {
             sessionType: type,
             backgroundViewModel: IllustrationBackgroundViewModel(
                 color: type.fgColor,
-                illustrationTexturePath: ImagePaths.roller2,
-                illustrationTextureColor: type.bgColor,
-                illustrationTextureFlipY: true,
-                illustrationTextureTweenBegin: 0,
-                illustrationTextureTweenEnd: .7,
-                illustrationTextureScale: config.shortMode ? 3 : 1.15,
+                textureViewModel: IllustrationTextureViewModel(
+                    ImagePaths.roller2,
+                    color: type.bgColor,
+                    scale: config.shortMode ? 3 : 1.15,
+                    flipY: true,
+                    tween: Tween(begin: 0, end: 0.7)),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
                     fileName: 'sun.png',
                     initialOffset: const Offset(0, 50),
@@ -400,11 +401,11 @@ class WonderIllustration extends StatelessWidget {
             sessionType: type,
             backgroundViewModel: IllustrationBackgroundViewModel(
                 color: type.fgColor,
-                illustrationTexturePath: ImagePaths.roller1,
-                illustrationTextureColor: Colors.white,
-                illustrationTextureTweenBegin: 0,
-                illustrationTextureTweenEnd: .5,
-                illustrationTextureScale: config.shortMode ? 3 : 1,
+                textureViewModel: IllustrationTextureViewModel(
+                    ImagePaths.roller1,
+                    color: Colors.white,
+                    scale: config.shortMode ? 3 : 1,
+                    tween: Tween(begin: 0, end: 0.5)),
                 illustrationPieceViewModel: IllustrationPieceViewModel(
                     fileName: 'sun.png',
                     initialOffset: const Offset(0, 50),
