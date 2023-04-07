@@ -51,7 +51,7 @@ class ChichenItzaIllustration extends StatelessWidget {
     // We want to size to the shortest side
     return [
       Transform.translate(
-        offset: Offset(0, config.shortMode ? 70 : -30),
+        offset: Offset(0, config.shortMode ? 70 : -30), // TODO: - ADD IT LATER
         child: const IllustrationPiece(
           fileName: 'chichen.png',
           heightFactor: .4,

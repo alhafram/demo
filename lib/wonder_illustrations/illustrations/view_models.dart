@@ -3,31 +3,33 @@ import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
 import 'package:flutter/material.dart';
 
 class IllustrationBackgroundViewModel {
-  final String illustrationTexturePath;
   final Color color;
-  final double tweenBegin;
-  final double tweenEnd;
-  final bool flipY;
-  final double scale;
+  final String illustrationTexturePath;
+  final Color? illustrationTextureColor;
+  final double illustrationTextureTweenBegin;
+  final double illustrationTextureTweenEnd;
+  final bool illustrationTextureFlipY;
+  final bool illustrationTextureFlipX;
+  final double illustrationTextureScale;
 
   final IllustrationPieceViewModel illustrationPieceViewModel;
 
   IllustrationBackgroundViewModel(
-      this.illustrationTexturePath,
-      this.color,
-      this.tweenBegin,
-      this.tweenEnd,
-      this.flipY,
-      this.scale,
-      this.illustrationPieceViewModel);
+      {required this.color,
+      required this.illustrationTexturePath,
+      this.illustrationTextureColor,
+      required this.illustrationTextureTweenBegin,
+      required this.illustrationTextureTweenEnd,
+      this.illustrationTextureFlipY = false,
+      this.illustrationTextureFlipX = false,
+      this.illustrationTextureScale = 1,
+      required this.illustrationPieceViewModel});
 }
 
 class IllustrationMiddlegroundViewModel {
-  final Offset offset;
   final IllustrationPieceViewModel illustrationPieceViewModel;
 
-  IllustrationMiddlegroundViewModel(
-      this.offset, this.illustrationPieceViewModel);
+  IllustrationMiddlegroundViewModel({required this.illustrationPieceViewModel});
 }
 
 class IllustrationPieceViewModel {
@@ -36,33 +38,36 @@ class IllustrationPieceViewModel {
   final Offset initialOffset;
   final double initialScale;
   final double heightFactor;
-  final Offset fractionalOffset;
+  final Offset? fractionalOffset;
   final double zoomAmt;
   final double dynamicHzOffset;
-  final double minHeight;
+  final double? minHeight;
   final Offset offset;
   final bool enableHero;
-  // final top
-  // final bottom
+  final Widget? top;
+  final Widget? bottom;
 
-  IllustrationPieceViewModel(
-      this.fileName,
-      this.alignment,
-      this.initialOffset,
-      this.initialScale,
-      this.heightFactor,
-      this.fractionalOffset,
-      this.zoomAmt,
-      this.dynamicHzOffset,
-      this.minHeight,
-      this.offset,
-      this.enableHero);
+  IllustrationPieceViewModel({
+    required this.fileName,
+    required this.heightFactor,
+    this.alignment = Alignment.center,
+    this.minHeight,
+    this.offset = Offset.zero,
+    this.fractionalOffset,
+    this.zoomAmt = 0,
+    this.initialOffset = Offset.zero,
+    this.enableHero = false,
+    this.initialScale = 1,
+    this.dynamicHzOffset = 0,
+    this.top,
+    this.bottom,
+  });
 }
 
 class IllustrationForegroundViewModel {
   final List<IllustrationPieceViewModel> viewModels;
 
-  IllustrationForegroundViewModel(this.viewModels);
+  IllustrationForegroundViewModel({required this.viewModels});
 }
 
 class IllustrationViewModel {
@@ -73,6 +78,10 @@ class IllustrationViewModel {
   final IllustrationMiddlegroundViewModel middlegroundViewModel;
   final IllustrationForegroundViewModel illustrationForegroundViewModel;
 
-  IllustrationViewModel(this.config, this.sessionType, this.backgroundViewModel,
-      this.middlegroundViewModel, this.illustrationForegroundViewModel);
+  IllustrationViewModel(
+      {required this.config,
+      required this.sessionType,
+      required this.backgroundViewModel,
+      required this.middlegroundViewModel,
+      required this.illustrationForegroundViewModel});
 }
