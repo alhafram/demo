@@ -12,8 +12,8 @@ import 'package:sized_context/sized_context.dart';
 class ColosseumIllustration extends StatelessWidget {
   ColosseumIllustration({Key? key, required this.config}) : super(key: key);
   final WonderIllustrationConfig config;
-  final String assetPath = WonderType.colosseum.assetPath;
-  final bgColor = WonderType.colosseum.bgColor;
+  final String assetPath = SessionType.colosseum.assetPath;
+  final bgColor = SessionType.colosseum.bgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ColosseumIllustration extends StatelessWidget {
       bgBuilder: _buildBg,
       mgBuilder: _buildMg,
       fgBuilder: _buildFg,
-      wonderType: WonderType.colosseum,
+      wonderType: SessionType.colosseum,
     );
   }
 

@@ -24,7 +24,7 @@ class WonderIllustrationBuilder extends StatefulWidget {
   final List<Widget> Function(BuildContext context, Animation<double> animation)
       bgBuilder;
   final WonderIllustrationConfig config;
-  final WonderType wonderType;
+  final SessionType wonderType;
 
   @override
   State<WonderIllustrationBuilder> createState() =>

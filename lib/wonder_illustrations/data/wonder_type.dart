@@ -1,5 +1,4 @@
-
-enum WonderType {
+enum SessionType {
   chichenItza,
   christRedeemer,
   colosseum,

@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 class PetraIllustration extends StatelessWidget {
   PetraIllustration({Key? key, required this.config}) : super(key: key);
   final WonderIllustrationConfig config;
-  final String assetPath = WonderType.petra.assetPath;
-  final fgColor = WonderType.petra.fgColor;
-  final bgColor = WonderType.petra.bgColor;
+  final String assetPath = SessionType.petra.assetPath;
+  final fgColor = SessionType.petra.fgColor;
+  final bgColor = SessionType.petra.bgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class PetraIllustration extends StatelessWidget {
       bgBuilder: _buildBg,
       mgBuilder: _buildMg,
       fgBuilder: _buildFg,
-      wonderType: WonderType.petra,
+      wonderType: SessionType.petra,
     );
   }
 
@@ -32,7 +32,7 @@ class PetraIllustration extends StatelessWidget {
       Positioned.fill(
         child: IllustrationTexture(
           ImagePaths.roller1,
-          color: WonderType.petra.bgColor,
+          color: SessionType.petra.bgColor,
           flipX: true,
           opacity: anim.drive(Tween(begin: 0, end: 1)),
           scale: config.shortMode ? 4 : 1.15,
@@ -83,7 +83,7 @@ class PetraIllustration extends StatelessWidget {
             child: Transform.scale(
                 scaleX: 5,
                 child: Container(
-                    color: WonderType.petra.fgColor.withOpacity(anim.value))),
+                    color: SessionType.petra.fgColor.withOpacity(anim.value))),
           );
         },
       ),
@@ -103,7 +103,7 @@ class PetraIllustration extends StatelessWidget {
             child: Transform.scale(
                 scaleX: 5,
                 child: Container(
-                    color: WonderType.petra.fgColor.withOpacity(anim.value))),
+                    color: SessionType.petra.fgColor.withOpacity(anim.value))),
           );
         },
       ),

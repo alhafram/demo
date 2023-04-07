@@ -14,9 +14,9 @@ class TajMahalIllustration extends StatelessWidget {
   TajMahalIllustration({Key? key, required this.config}) : super(key: key);
   final WonderIllustrationConfig config;
 
-  final fgColor = WonderType.tajMahal.fgColor;
-  final bgColor = WonderType.tajMahal.bgColor;
-  final assetPath = WonderType.tajMahal.assetPath;
+  final fgColor = SessionType.tajMahal.fgColor;
+  final bgColor = SessionType.tajMahal.bgColor;
+  final assetPath = SessionType.tajMahal.assetPath;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class TajMahalIllustration extends StatelessWidget {
       bgBuilder: _buildBg,
       mgBuilder: _buildMg,
       fgBuilder: _buildFg,
-      wonderType: WonderType.tajMahal,
+      wonderType: SessionType.tajMahal,
     );
   }
 

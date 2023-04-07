@@ -12,8 +12,8 @@ class ChristRedeemerIllustration extends StatelessWidget {
   ChristRedeemerIllustration({Key? key, required this.config})
       : super(key: key);
   final WonderIllustrationConfig config;
-  final String assetPath = WonderType.christRedeemer.assetPath;
-  final fgColor = WonderType.christRedeemer.fgColor;
+  final String assetPath = SessionType.christRedeemer.assetPath;
+  final fgColor = SessionType.christRedeemer.fgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ChristRedeemerIllustration extends StatelessWidget {
       bgBuilder: _buildBg,
       mgBuilder: _buildMg,
       fgBuilder: _buildFg,
-      wonderType: WonderType.christRedeemer,
+      wonderType: SessionType.christRedeemer,
     );
   }
 

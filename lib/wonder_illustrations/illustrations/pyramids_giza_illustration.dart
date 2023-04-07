@@ -12,14 +12,14 @@ import 'package:sized_context/sized_context.dart';
 class PyramidsGizaIllustration extends StatelessWidget {
   PyramidsGizaIllustration({Key? key, required this.config}) : super(key: key);
   final WonderIllustrationConfig config;
-  final String assetPath = WonderType.pyramidsGiza.assetPath;
-  final fgColor = WonderType.pyramidsGiza.fgColor;
-  final bgColor = WonderType.pyramidsGiza.bgColor;
+  final String assetPath = SessionType.pyramidsGiza.assetPath;
+  final fgColor = SessionType.pyramidsGiza.fgColor;
+  final bgColor = SessionType.pyramidsGiza.bgColor;
 
   @override
   Widget build(BuildContext context) {
     return WonderIllustrationBuilder(
-      wonderType: WonderType.pyramidsGiza,
+      wonderType: SessionType.pyramidsGiza,
       config: config,
       bgBuilder: _buildBg,
       mgBuilder: _buildMg,

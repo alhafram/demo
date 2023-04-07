@@ -14,26 +14,26 @@ class WonderIllustration extends StatelessWidget {
   const WonderIllustration(this.type, {Key? key, required this.config})
       : super(key: key);
   final WonderIllustrationConfig config;
-  final WonderType type;
+  final SessionType type;
 
   @override
   Widget build(BuildContext context) {
     switch (type) {
-      case WonderType.greatWall:
+      case SessionType.greatWall:
         return GreatWallIllustration(config: config);
-      case WonderType.petra:
+      case SessionType.petra:
         return PetraIllustration(config: config);
-      case WonderType.colosseum:
+      case SessionType.colosseum:
         return ColosseumIllustration(config: config);
-      case WonderType.chichenItza:
+      case SessionType.chichenItza:
         return ChichenItzaIllustration(config: config);
-      case WonderType.christRedeemer:
+      case SessionType.christRedeemer:
         return ChristRedeemerIllustration(config: config);
-      case WonderType.pyramidsGiza:
+      case SessionType.pyramidsGiza:
         return PyramidsGizaIllustration(config: config);
-      case WonderType.tajMahal:
+      case SessionType.tajMahal:
         return TajMahalIllustration(config: config);
-      case WonderType.machuPicchu:
+      case SessionType.machuPicchu:
         return MachuPicchuIllustration(config: config);
     }
   }

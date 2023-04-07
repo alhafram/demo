@@ -1,9 +1,8 @@
 import 'package:demo/colors.dart';
 import 'package:demo/wonder_illustrations/animated_clouds.dart';
-import 'package:demo/wonder_illustrations/data/wonder_data.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
-import 'package:demo/wonder_illustrations/wonders_logic.dart';
+import 'package:demo/wonder_illustrations/sessions_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
@@ -19,7 +18,7 @@ class HomeScreen extends StatefulWidget with GetItStatefulWidgetMixin {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late final PageController _pageController;
-  List<WonderData> get _wonders => WondersLogic().all;
+  List<SessionType> get _wonders => SessionDataSource().all;
 
   late int _wonderIndex = 0;
   int get _numWonders => _wonders.length;
@@ -27,9 +26,9 @@ class _HomeScreenState extends State<HomeScreen>
 
   final _fadeAnims = <AnimationController>[];
 
-  WonderData get currentWonder => _wonders[_wonderIndex];
+  SessionType get currentSessionType => _wonders[_wonderIndex];
 
-  bool _isSelected(WonderType t) => t == currentWonder.type;
+  bool _isSelected(SessionType t) => t == currentSessionType;
 
   @override
   void initState() {
@@ -94,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen>
             onPageChanged: _handlePageChanged,
             itemBuilder: (_, index) {
               final wonder = _wonders[index % _wonders.length];
-              final wonderType = wonder.type;
+              final wonderType = wonder;
               bool isShowing = _isSelected(wonderType);
               final config = WonderIllustrationConfig.mg(
                   isShowing: isShowing, zoom: .05 * 1);
@@ -105,14 +104,13 @@ class _HomeScreenState extends State<HomeScreen>
   List<Widget> _buildBgAndClouds() {
     return [
       ..._wonders.map((e) {
-        final config =
-            WonderIllustrationConfig.bg(isShowing: _isSelected(e.type));
-        return WonderIllustration(e.type, config: config);
+        final config = WonderIllustrationConfig.bg(isShowing: _isSelected(e));
+        return WonderIllustration(e, config: config);
       }).toList(),
       FractionallySizedBox(
         widthFactor: 1,
         heightFactor: .5,
-        child: AnimatedClouds(wonderType: currentWonder.type, opacity: 1),
+        child: AnimatedClouds(wonderType: currentSessionType, opacity: 1),
       )
     ];
   }
@@ -139,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen>
       );
     }
 
-    final gradientColor = currentWonder.type.bgColor;
+    final gradientColor = currentSessionType.bgColor;
     return Stack(children: [
       /// Foreground gradient-1, gets darker when swiping up
       BottomCenter(
@@ -148,13 +146,12 @@ class _HomeScreenState extends State<HomeScreen>
 
       /// Foreground decorators
       ..._wonders.map((e) {
-        final config = WonderIllustrationConfig.fg(
-            isShowing: _isSelected(e.type), zoom: .4);
+        final config =
+            WonderIllustrationConfig.fg(isShowing: _isSelected(e), zoom: .4);
         return Animate(
             effects: const [FadeEffect()],
             onPlay: _handleFadeAnimInit,
-            child: IgnorePointer(
-                child: WonderIllustration(e.type, config: config)));
+            child: IgnorePointer(child: WonderIllustration(e, config: config)));
       }).toList(),
 
       /// Foreground gradient-2, gets darker when swiping up

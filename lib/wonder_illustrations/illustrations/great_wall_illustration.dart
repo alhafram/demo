@@ -12,9 +12,9 @@ import 'package:sized_context/sized_context.dart';
 class GreatWallIllustration extends StatelessWidget {
   GreatWallIllustration({Key? key, required this.config}) : super(key: key);
   final WonderIllustrationConfig config;
-  final String assetPath = WonderType.greatWall.assetPath;
-  final fgColor = WonderType.greatWall.fgColor;
-  final bgColor = WonderType.greatWall.bgColor;
+  final String assetPath = SessionType.greatWall.assetPath;
+  final fgColor = SessionType.greatWall.fgColor;
+  final bgColor = SessionType.greatWall.bgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class GreatWallIllustration extends StatelessWidget {
       bgBuilder: _buildBg,
       mgBuilder: _buildMg,
       fgBuilder: _buildFg,
-      wonderType: WonderType.greatWall,
+      wonderType: SessionType.greatWall,
     );
   }
 

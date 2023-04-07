@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 class ChichenItzaIllustration extends StatelessWidget {
   ChichenItzaIllustration({Key? key, required this.config}) : super(key: key);
   final WonderIllustrationConfig config;
-  final assetPath = WonderType.chichenItza.assetPath;
-  final fgColor = WonderType.chichenItza.fgColor;
+  final assetPath = SessionType.chichenItza.assetPath;
+  final fgColor = SessionType.chichenItza.fgColor;
   @override
   Widget build(BuildContext context) {
     return WonderIllustrationBuilder(
@@ -20,7 +20,7 @@ class ChichenItzaIllustration extends StatelessWidget {
       bgBuilder: _buildBg,
       mgBuilder: _buildMg,
       fgBuilder: _buildFg,
-      wonderType: WonderType.chichenItza,
+      wonderType: SessionType.chichenItza,
     );
   }
 

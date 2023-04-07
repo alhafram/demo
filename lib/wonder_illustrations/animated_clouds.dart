@@ -19,7 +19,7 @@ class AnimatedClouds extends StatefulWidget with GetItStatefulWidgetMixin {
       required this.opacity,
       this.cloudSize = 500})
       : super(key: key);
-  final WonderType wonderType;
+  final SessionType wonderType;
   final bool enableAnimations;
   final double opacity;
   final double cloudSize;
@@ -59,23 +59,23 @@ class _AnimatedCloudsState extends State<AnimatedClouds>
     super.didUpdateWidget(oldWidget);
   }
 
-  int _getCloudSeed(WonderType type) {
+  int _getCloudSeed(SessionType type) {
     switch (type) {
-      case WonderType.chichenItza:
+      case SessionType.chichenItza:
         return 2;
-      case WonderType.christRedeemer:
+      case SessionType.christRedeemer:
         return 78;
-      case WonderType.colosseum:
+      case SessionType.colosseum:
         return 1;
-      case WonderType.greatWall:
+      case SessionType.greatWall:
         return 500;
-      case WonderType.machuPicchu:
+      case SessionType.machuPicchu:
         return 37;
-      case WonderType.petra:
+      case SessionType.petra:
         return 111;
-      case WonderType.pyramidsGiza:
+      case SessionType.pyramidsGiza:
         return 15;
-      case WonderType.tajMahal:
+      case SessionType.tajMahal:
         return 2;
     }
   }

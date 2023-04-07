@@ -12,9 +12,9 @@ import 'package:sized_context/sized_context.dart';
 class MachuPicchuIllustration extends StatelessWidget {
   MachuPicchuIllustration({Key? key, required this.config}) : super(key: key);
   final WonderIllustrationConfig config;
-  final String assetPath = WonderType.machuPicchu.assetPath;
-  final fgColor = WonderType.machuPicchu.fgColor;
-  final bgColor = WonderType.machuPicchu.bgColor;
+  final String assetPath = SessionType.machuPicchu.assetPath;
+  final fgColor = SessionType.machuPicchu.fgColor;
+  final bgColor = SessionType.machuPicchu.bgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class MachuPicchuIllustration extends StatelessWidget {
       bgBuilder: _buildBg,
       mgBuilder: _buildMg,
       fgBuilder: _buildFg,
-      wonderType: WonderType.machuPicchu,
+      wonderType: SessionType.machuPicchu,
     );
   }
 
