@@ -1,8 +1,9 @@
+import 'dart:math';
+
 import 'package:demo/assets.dart';
 import 'package:demo/colors.dart';
 import 'package:demo/wonder_illustrations/data/wonder_type.dart';
 import 'package:demo/wonder_illustrations/illustrations/base_illustration.dart';
-import 'package:demo/wonder_illustrations/illustrations/pyramids_giza_illustration.dart';
 import 'package:demo/wonder_illustrations/illustrations/taj_mahal_illustration.dart';
 import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
@@ -343,7 +344,58 @@ class WonderIllustration extends StatelessWidget {
                         config.shortMode ? .17 : -.15))));
         return BaseIllustration(illustrationViewModel: vm);
       case SessionType.tajMahal:
-        return TajMahalIllustration(config: config);
+        final mangoScale = max(context.widthPx - 400, 0) / 1000;
+        const double minHeight = 230, heightFactor = .6, poolScale = 1;
+        var vm = IllustrationViewModel(
+            config: config,
+            sessionType: type,
+            backgroundViewModel: IllustrationBackgroundViewModel(
+                color: type.fgColor,
+                illustrationTexturePath: ImagePaths.roller2,
+                illustrationTextureColor: type.bgColor,
+                illustrationTextureFlipY: true,
+                illustrationTextureTweenBegin: 0,
+                illustrationTextureTweenEnd: .7,
+                illustrationTextureScale: config.shortMode ? 3 : 1.15,
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'sun.png',
+                    initialOffset: const Offset(0, 50),
+                    enableHero: true,
+                    heightFactor: .3,
+                    minHeight: 140,
+                    offset: config.shortMode
+                        ? Offset(-100, context.heightPx * -.02)
+                        : Offset(-150, context.heightPx * -.34))),
+            illustrationForegroundViewModel:
+                IllustrationForegroundViewModel(viewModels: [
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-right.png',
+                  alignment: Alignment.bottomRight,
+                  initialOffset: const Offset(20, 40),
+                  initialScale: .85,
+                  heightFactor: .5 + .4 * mangoScale,
+                  fractionalOffset: const Offset(.3, 0),
+                  zoomAmt: .25),
+              IllustrationPieceViewModel(
+                  fileName: 'foreground-left.png',
+                  alignment: Alignment.bottomLeft,
+                  initialScale: .9,
+                  initialOffset: const Offset(-40, 60),
+                  heightFactor: .6 + .3 * mangoScale,
+                  fractionalOffset: const Offset(-.3, 0),
+                  zoomAmt: .25,
+                  dynamicHzOffset: 0)
+            ]),
+            middlegroundViewModel: IllustrationMiddlegroundViewModel(
+                illustrationPieceViewModel: IllustrationPieceViewModel(
+                    fileName: 'taj-mahal.png',
+                    heightFactor: heightFactor,
+                    minHeight: minHeight,
+                    enableHero: true,
+                    zoomAmt: .05,
+                    fractionalOffset:
+                        Offset(0, config.shortMode ? .12 : -.15))));
+        return BaseIllustration(illustrationViewModel: vm);
       case SessionType.machuPicchu:
         var vm = IllustrationViewModel(
             config: config,
