@@ -6,18 +6,16 @@ import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
 import 'package:demo/wonder_illustrations/sessions_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:get_it_mixin/get_it_mixin.dart';
 import 'wonder_illustrations/illustrations/wonder_type.dart';
 
-class HomeScreen extends StatefulWidget with GetItStatefulWidgetMixin {
-  HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen> {
   late final PageController _pageController;
   SessionDataSource dataSource = SessionDataSource();
 
@@ -25,9 +23,6 @@ class _HomeScreenState extends State<HomeScreen>
 
   late int _wonderIndex = 0;
   int get _numWonders => _wonders.length;
-  bool _fadeInOnNextBuild = false;
-
-  final _fadeAnims = <AnimationController>[];
 
   SessionType get currentSessionType => _wonders[_wonderIndex];
 
@@ -48,31 +43,8 @@ class _HomeScreenState extends State<HomeScreen>
     });
   }
 
-  void _handleFadeAnimInit(AnimationController controller) {
-    _fadeAnims.add(controller);
-    controller.value = 1;
-  }
-
-  void _startDelayedFgFade() async {
-    try {
-      for (var a in _fadeAnims) {
-        a.value = 0;
-      }
-      await Future.delayed(300.ms);
-      for (var a in _fadeAnims) {
-        a.forward();
-      }
-    } on Exception catch (e) {
-      debugPrint(e.toString());
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (_fadeInOnNextBuild == true) {
-      _startDelayedFgFade();
-      _fadeInOnNextBuild = false;
-    }
     return Container(
         color: AppColors().black,
         child: Stack(children: [
@@ -123,14 +95,16 @@ class _HomeScreenState extends State<HomeScreen>
               child: Container(
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  fgColor.withOpacity(0),
-                  fgColor.withOpacity(.5 + fgColor.opacity * .25)
-                ],
-                stops: const [0, 1],
-              )))));
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                    fgColor.withOpacity(0),
+                    fgColor.withOpacity(.5 + fgColor.opacity * .25)
+                  ],
+                          stops: const [
+                    0,
+                    1
+                  ])))));
     }
 
     final gradientColor = currentSessionType.bgColor;
@@ -142,7 +116,6 @@ class _HomeScreenState extends State<HomeScreen>
             WonderIllustrationConfig.fg(isShowing: _isSelected(e), zoom: .4);
         return Animate(
             effects: const [FadeEffect()],
-            onPlay: _handleFadeAnimInit,
             child: IgnorePointer(
                 child: BaseIllustration(
                     illustrationViewModel:
