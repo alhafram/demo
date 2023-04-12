@@ -1,20 +1,20 @@
-import 'package:demo/wonder_illustrations/fade_color_transition.dart';
-import 'package:demo/wonder_illustrations/illustration_piece.dart';
-import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
-import 'package:demo/wonder_illustrations/paint_textures.dart';
-import 'package:demo/wonder_illustrations/wonder_illustration_builder.dart';
-import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
+import 'package:demo/illustrations/fade_color_transition.dart';
+import 'package:demo/illustrations/illustration_piece.dart';
+import 'package:demo/illustrations/view_models.dart';
+import 'package:demo/illustrations/paint_textures.dart';
+import 'package:demo/illustrations/illustration_builder.dart';
+import 'package:demo/illustrations/illustration_config.dart';
 import 'package:flutter/material.dart';
 
 class BaseIllustration extends StatelessWidget {
   final IllustrationViewModel illustrationViewModel;
-  final WonderIllustrationConfig config;
+  final IllustrationConfig config;
 
   const BaseIllustration(
       {super.key, required this.illustrationViewModel, required this.config});
   @override
   Widget build(BuildContext context) {
-    return WonderIllustrationBuilder(
+    return IllustrationBuilder(
         config: config,
         bgBuilder: _buildBg,
         mgBuilder: _buildMg,

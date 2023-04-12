@@ -1,4 +1,4 @@
-import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
+import 'package:demo/illustrations/view_models.dart';
 import 'package:flutter/material.dart';
 
 class IllustrationTexture extends StatelessWidget {

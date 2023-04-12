@@ -1,8 +1,7 @@
-import 'package:demo/wonder_illustrations/animated_clouds.dart';
-import 'package:demo/wonder_illustrations/illustrations/base_illustration.dart';
-import 'package:demo/wonder_illustrations/wonder_illustration.dart';
-import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
-import 'package:demo/wonder_illustrations/sessions_data_source.dart';
+import 'package:demo/illustrations/animated_clouds.dart';
+import 'package:demo/illustrations/base_illustration.dart';
+import 'package:demo/illustrations/illustration_config.dart';
+import 'package:demo/illustrations/data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -15,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late final PageController _pageController;
-  SessionDataSource dataSource = SessionDataSource();
+  DataSource dataSource = DataSource();
 
   @override
   void initState() {
@@ -53,9 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
             itemBuilder: (_, index) {
               final viewModel = dataSource.all[index % dataSource.all.length];
               bool isShowing = dataSource.isSelected(viewModel.id);
-              final config = WonderIllustrationConfig.mg(
-                  isShowing: isShowing, zoom: .05 * 1);
-              return WonderIllustration(viewModel: viewModel, config: config);
+              final config =
+                  IllustrationConfig.mg(isShowing: isShowing, zoom: .05 * 1);
+              return BaseIllustration(
+                  illustrationViewModel: viewModel, config: config);
             }));
   }
 
@@ -63,11 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return [
       ...dataSource.all.map((e) {
         final config =
-            WonderIllustrationConfig.bg(isShowing: dataSource.isSelected(e.id));
-        return WonderIllustration(
-          viewModel: dataSource.all[e.id],
-          config: config,
-        );
+            IllustrationConfig.bg(isShowing: dataSource.isSelected(e.id));
+        return BaseIllustration(
+            illustrationViewModel: dataSource.all[e.id], config: config);
       }).toList(),
       FractionallySizedBox(
           widthFactor: 1, heightFactor: .5, child: AnimatedClouds(opacity: 1))
@@ -76,6 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildFgAndGradients() {
     Widget buildSwipeableBgGradient(Color fgColor) {
+      List<double> stops = [0, 1];
       return IgnorePointer(
           child: FractionallySizedBox(
               heightFactor: .6,
@@ -85,13 +84,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [
-                    fgColor.withOpacity(0),
-                    fgColor.withOpacity(.5 + fgColor.opacity * .25)
-                  ],
-                          stops: const [
-                    0,
-                    1
-                  ])))));
+                            fgColor.withOpacity(0),
+                            fgColor.withOpacity(.5 + fgColor.opacity * .25)
+                          ],
+                          stops: stops)))));
     }
 
     Color gradientColor = dataSource.all[dataSource.currentId].bgColor;
@@ -99,15 +95,14 @@ class _HomeScreenState extends State<HomeScreen> {
       BottomCenter(
           child: buildSwipeableBgGradient(gradientColor.withOpacity(.65))),
       ...dataSource.all.map((e) {
-        final config = WonderIllustrationConfig.fg(
+        final config = IllustrationConfig.fg(
             isShowing: dataSource.isSelected(e.id), zoom: .4);
         return Animate(
             effects: const [FadeEffect()],
             child: IgnorePointer(
                 child: BaseIllustration(
-              illustrationViewModel: dataSource.all[e.id],
-              config: config,
-            )));
+                    illustrationViewModel: dataSource.all[e.id],
+                    config: config)));
       }).toList(),
       BottomCenter(child: buildSwipeableBgGradient(gradientColor))
     ]);

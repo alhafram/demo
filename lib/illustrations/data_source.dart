@@ -1,16 +1,16 @@
 import 'package:demo/assets.dart';
-import 'package:demo/colors.dart';
-import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
+import 'package:demo/color_utils.dart';
+import 'package:demo/illustrations/view_models.dart';
 import 'package:flutter/material.dart';
 
-class SessionDataSource {
+class DataSource {
   List<IllustrationViewModel> all = [];
 
   int currentId = 0;
 
   bool isSelected(int id) => id == currentId;
 
-  SessionDataSource() {
+  DataSource() {
     all = [
       IllustrationViewModel(
           id: 0,

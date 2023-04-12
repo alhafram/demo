@@ -1,8 +1,7 @@
-/// Indicates the current setup for a WonderIllustration, allowing the single widget to be used in a variety of contexts.
-class WonderIllustrationConfig {
+class IllustrationConfig {
   static const double _defaultZoom = 1;
 
-  const WonderIllustrationConfig(
+  const IllustrationConfig(
       {this.zoom = _defaultZoom,
       this.isShowing = true,
       this.enableFg = true,
@@ -18,37 +17,36 @@ class WonderIllustrationConfig {
   final bool enableHero;
   final bool enableAnims;
 
-  /// Shortcut constructors to reduce boilerplate in the views when only 1 layer is required.
-  factory WonderIllustrationConfig.fg(
+  factory IllustrationConfig.fg(
           {double zoom = _defaultZoom,
           bool isShowing = true,
           bool enableHero = true,
           bool enableAnims = true}) =>
-      WonderIllustrationConfig(
+      IllustrationConfig(
           zoom: zoom,
           isShowing: isShowing,
           enableHero: enableHero,
           enableAnims: enableAnims,
           enableBg: false,
           enableMg: false);
-  factory WonderIllustrationConfig.bg(
+  factory IllustrationConfig.bg(
           {double zoom = _defaultZoom,
           bool isShowing = true,
           bool enableHero = true,
           bool enableAnims = true}) =>
-      WonderIllustrationConfig(
+      IllustrationConfig(
           zoom: zoom,
           isShowing: isShowing,
           enableHero: enableHero,
           enableAnims: enableAnims,
           enableFg: false,
           enableMg: false);
-  factory WonderIllustrationConfig.mg(
+  factory IllustrationConfig.mg(
           {double zoom = _defaultZoom,
           bool isShowing = true,
           bool enableHero = true,
           bool enableAnims = true}) =>
-      WonderIllustrationConfig(
+      IllustrationConfig(
           zoom: zoom,
           isShowing: isShowing,
           enableHero: enableHero,

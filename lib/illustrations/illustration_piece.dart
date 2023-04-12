@@ -1,14 +1,12 @@
 import 'dart:math';
 import 'dart:ui' as ui;
-import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
-import 'package:demo/wonder_illustrations/wonder_illustration_builder.dart';
+import 'package:demo/illustrations/view_models.dart';
+import 'package:demo/illustrations/illustration_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sized_context/sized_context.dart';
 
-/// Combines [Align], [FractionalBoxWithMinSize], [Image] and [Transform.translate]
-/// to standardize behavior across the various wonder illustrations
 class IllustrationPiece extends StatefulWidget {
   const IllustrationPiece({
     Key? key,
@@ -88,7 +86,7 @@ class _IllustrationPieceState extends State<IllustrationPiece> {
   ui.Image? uiImage;
   @override
   Widget build(BuildContext context) {
-    final wonderBuilder = context.watch<WonderIllustrationBuilderState>();
+    final builder = context.watch<IllustrationBuilderState>();
     final imgPath = widget.fileName;
     // Dynamically determine the aspect ratio of the image, so we can more easily position it
     if (aspectRatio == null) {
@@ -104,9 +102,9 @@ class _IllustrationPieceState extends State<IllustrationPiece> {
         child: LayoutBuilder(
             key: ValueKey(aspectRatio),
             builder: (_, constraints) {
-              final anim = wonderBuilder.anim;
+              final anim = builder.anim;
               final curvedAnim = Curves.easeOut.transform(anim.value);
-              final config = wonderBuilder.widget.config;
+              final config = builder.widget.config;
               Widget img =
                   Image.asset(imgPath, opacity: anim, fit: BoxFit.fitHeight);
               // Add overflow box so image doesn't get clipped as we translate it around

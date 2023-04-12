@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:demo/assets.dart';
-import 'package:demo/wonder_illustrations/context_utils.dart';
+import 'package:demo/illustrations/context_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:rnd/rnd.dart';
@@ -76,7 +76,6 @@ class _AnimatedCloudsState extends State<AnimatedClouds>
     // }
   }
 
-  /// Starts playing the clouds animation, or jumps right to the end, based on [AnimatedClouds.enableAnimations]
   void _showClouds() {
     widget.enableAnimations ? _anim.forward(from: 0) : _anim.value = 1;
   }
