@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Colored box that can fade in and out, should yield better performance than
-/// fading with an additional Opacity layer.
 class FadeColorTransition extends StatelessWidget {
   const FadeColorTransition(
       {Key? key, required this.animation, required this.color})
@@ -11,8 +9,6 @@ class FadeColorTransition extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-        animation: animation,
-        builder: (_, __) =>
-            Container(color: color.withOpacity(animation.value)),
-      );
+      animation: animation,
+      builder: (_, __) => Container(color: color.withOpacity(animation.value)));
 }

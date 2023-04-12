@@ -1,4 +1,3 @@
-import 'package:demo/colors.dart';
 import 'package:demo/wonder_illustrations/animated_clouds.dart';
 import 'package:demo/wonder_illustrations/illustrations/base_illustration.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration.dart';
@@ -6,7 +5,6 @@ import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
 import 'package:demo/wonder_illustrations/sessions_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'wonder_illustrations/illustrations/wonder_type.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,34 +17,25 @@ class _HomeScreenState extends State<HomeScreen> {
   late final PageController _pageController;
   SessionDataSource dataSource = SessionDataSource();
 
-  List<SessionType> get _wonders => dataSource.all;
-
-  late int _wonderIndex = 0;
-  int get _numWonders => _wonders.length;
-
-  SessionType get currentSessionType => _wonders[_wonderIndex];
-
-  bool _isSelected(SessionType t) => t == currentSessionType;
-
   @override
   void initState() {
     super.initState();
-    final initialPage = _numWonders * 9999;
+    final initialPage = dataSource.all.length * 9999;
     _pageController =
         PageController(viewportFraction: 1, initialPage: initialPage);
-    _wonderIndex = initialPage % _numWonders;
+    dataSource.currentId = initialPage % dataSource.all.length;
   }
 
   void _handlePageChanged(value) {
     setState(() {
-      _wonderIndex = value % _numWonders;
+      dataSource.currentId = value % dataSource.all.length;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: AppColors().black,
+        color: const Color(0xFF1E1B18),
         child: Stack(children: [
           Stack(children: [
             ..._buildBgAndClouds(),
@@ -62,28 +51,26 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: _pageController,
             onPageChanged: _handlePageChanged,
             itemBuilder: (_, index) {
-              final wonder = _wonders[index % _wonders.length];
-              final wonderType = wonder;
-              bool isShowing = _isSelected(wonderType);
+              final viewModel = dataSource.all[index % dataSource.all.length];
+              bool isShowing = dataSource.isSelected(viewModel.id);
               final config = WonderIllustrationConfig.mg(
                   isShowing: isShowing, zoom: .05 * 1);
-              return WonderIllustration(
-                  viewModel:
-                      dataSource.getViewModelFor(wonderType, config, context));
+              return WonderIllustration(viewModel: viewModel, config: config);
             }));
   }
 
   List<Widget> _buildBgAndClouds() {
     return [
-      ..._wonders.map((e) {
-        final config = WonderIllustrationConfig.bg(isShowing: _isSelected(e));
+      ...dataSource.all.map((e) {
+        final config =
+            WonderIllustrationConfig.bg(isShowing: dataSource.isSelected(e.id));
         return WonderIllustration(
-            viewModel: dataSource.getViewModelFor(e, config, context));
+          viewModel: dataSource.all[e.id],
+          config: config,
+        );
       }).toList(),
       FractionallySizedBox(
-          widthFactor: 1,
-          heightFactor: .5,
-          child: AnimatedClouds(wonderType: currentSessionType, opacity: 1))
+          widthFactor: 1, heightFactor: .5, child: AnimatedClouds(opacity: 1))
     ];
   }
 
@@ -107,19 +94,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   ])))));
     }
 
-    final gradientColor = currentSessionType.bgColor;
+    Color gradientColor = dataSource.all[dataSource.currentId].bgColor;
     return Stack(children: [
       BottomCenter(
           child: buildSwipeableBgGradient(gradientColor.withOpacity(.65))),
-      ..._wonders.map((e) {
-        final config =
-            WonderIllustrationConfig.fg(isShowing: _isSelected(e), zoom: .4);
+      ...dataSource.all.map((e) {
+        final config = WonderIllustrationConfig.fg(
+            isShowing: dataSource.isSelected(e.id), zoom: .4);
         return Animate(
             effects: const [FadeEffect()],
             child: IgnorePointer(
                 child: BaseIllustration(
-                    illustrationViewModel:
-                        dataSource.getViewModelFor(e, config, context))));
+              illustrationViewModel: dataSource.all[e.id],
+              config: config,
+            )));
       }).toList(),
       BottomCenter(child: buildSwipeableBgGradient(gradientColor))
     ]);

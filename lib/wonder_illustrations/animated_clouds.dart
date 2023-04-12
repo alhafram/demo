@@ -1,25 +1,19 @@
 import 'dart:async';
 import 'package:demo/assets.dart';
 import 'package:demo/wonder_illustrations/context_utils.dart';
-import 'package:demo/wonder_illustrations/illustrations/wonder_type.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:rnd/rnd.dart';
 import 'package:sized_context/sized_context.dart';
 export 'package:rnd/rnd.dart';
 
-// Shows a set of clouds that animated onto stage.
-// When value-key is changed, a new set of clouds will animate into place and the old ones will animate out.
-// Uses a random seed system, to make sure we get the same set of clouds for each wonder, without actually having to hand-position them.
 class AnimatedClouds extends StatefulWidget with GetItStatefulWidgetMixin {
   AnimatedClouds(
       {Key? key,
       this.enableAnimations = true,
-      required this.wonderType,
       required this.opacity,
       this.cloudSize = 500})
       : super(key: key);
-  final SessionType wonderType;
   final bool enableAnimations;
   final double opacity;
   final double cloudSize;
@@ -51,7 +45,7 @@ class _AnimatedCloudsState extends State<AnimatedClouds>
 
   @override
   void didUpdateWidget(covariant AnimatedClouds oldWidget) {
-    if (oldWidget.wonderType != widget.wonderType) {
+    if (oldWidget.hashCode != widget.hashCode) {
       _oldClouds = _clouds;
       _clouds = _getClouds();
       _showClouds();
@@ -59,25 +53,27 @@ class _AnimatedCloudsState extends State<AnimatedClouds>
     super.didUpdateWidget(oldWidget);
   }
 
-  int _getCloudSeed(SessionType type) {
-    switch (type) {
-      case SessionType.chichenItza:
-        return 2;
-      case SessionType.christRedeemer:
-        return 78;
-      case SessionType.colosseum:
-        return 1;
-      case SessionType.greatWall:
-        return 500;
-      case SessionType.machuPicchu:
-        return 37;
-      case SessionType.petra:
-        return 111;
-      case SessionType.pyramidsGiza:
-        return 15;
-      case SessionType.tajMahal:
-        return 2;
-    }
+// Прокинуть сюда seed
+  int _getCloudSeed() {
+    return 2;
+    // switch (type) {
+    //   case SessionType.chichenItza:
+    //     return 2;
+    //   case SessionType.christRedeemer:
+    //     return 78;
+    //   case SessionType.colosseum:
+    //     return 1;
+    //   case SessionType.greatWall:
+    //     return 500;
+    //   case SessionType.machuPicchu:
+    //     return 37;
+    //   case SessionType.petra:
+    //     return 111;
+    //   case SessionType.pyramidsGiza:
+    //     return 15;
+    //   case SessionType.tajMahal:
+    //     return 2;
+    // }
   }
 
   /// Starts playing the clouds animation, or jumps right to the end, based on [AnimatedClouds.enableAnimations]
@@ -87,62 +83,51 @@ class _AnimatedCloudsState extends State<AnimatedClouds>
 
   @override
   Widget build(BuildContext context) {
-    // Old clouds animate from 0 to startOffset, new clouds do the opposite.
     Widget buildCloud(_Cloud c,
         {required bool isOld, required int startOffset}) {
-      // Use a positive, or negative start offset, based on index
       final stOffset = _clouds.indexOf(c) % 2 == 0 ? -startOffset : startOffset;
-      // If old, we will end at the stOffset and start at 0, if new, start at stOffset, and end at 0
       double curvedValue = Curves.easeOut.transform(_anim.value);
       return Positioned(
-        top: c.pos.dy,
-        left: isOld
-            ? c.pos.dx - stOffset * curvedValue
-            : c.pos.dx + stOffset * (1 - curvedValue),
-        child:
-            Opacity(opacity: isOld ? 1 - _anim.value : _anim.value, child: c),
-      );
+          top: c.pos.dy,
+          left: isOld
+              ? c.pos.dx - stOffset * curvedValue
+              : c.pos.dx + stOffset * (1 - curvedValue),
+          child: Opacity(
+              opacity: isOld ? 1 - _anim.value : _anim.value, child: c));
     }
 
     return RepaintBoundary(
-      child: ClipRect(
-        child: OverflowBox(
-          child: AnimatedBuilder(
-            animation: _anim,
-            builder: (_, __) {
-              // A stack with 2 sets of clouds, one set is moving out of view while the other moves in.
-              return Stack(
-                clipBehavior: Clip.hardEdge,
-                key: ValueKey(widget.wonderType),
-                children: [
-                  if (_anim.value != 1) ...[
-                    ..._oldClouds.map(
-                        (c) => buildCloud(c, isOld: true, startOffset: 1000)),
-                  ],
-                  ..._clouds.map(
-                      (c) => buildCloud(c, isOld: false, startOffset: 1000)),
-                ],
-              );
-            },
-          ),
-        ),
-      ),
-    );
+        child: ClipRect(
+            child: OverflowBox(
+                child: AnimatedBuilder(
+                    animation: _anim,
+                    builder: (_, __) {
+                      return Stack(
+                          clipBehavior: Clip.hardEdge,
+                          key: ValueKey(widget.hashCode),
+                          children: [
+                            if (_anim.value != 1) ...[
+                              ..._oldClouds.map((c) =>
+                                  buildCloud(c, isOld: true, startOffset: 1000))
+                            ],
+                            ..._clouds.map((c) =>
+                                buildCloud(c, isOld: false, startOffset: 1000))
+                          ]);
+                    }))));
   }
 
   List<_Cloud> _getClouds() {
     Size size = ContextUtils.getSize(context) ?? Size(context.widthPx, 400);
-    rndSeed = _getCloudSeed(widget.wonderType);
+    rndSeed = _getCloudSeed();
     return List<_Cloud>.generate(3, (index) {
       return _Cloud(
-        Offset(rnd.getDouble(-200, size.width - 100),
-            rnd.getDouble(50, size.height - 50)),
-        scale: rnd.getDouble(.7, 1),
-        flipX: rnd.getBool(),
-        flipY: rnd.getBool(),
-        opacity: widget.opacity,
-        size: widget.cloudSize,
-      );
+          Offset(rnd.getDouble(-200, size.width - 100),
+              rnd.getDouble(50, size.height - 50)),
+          scale: rnd.getDouble(.7, 1),
+          flipX: rnd.getBool(),
+          flipY: rnd.getBool(),
+          opacity: widget.opacity,
+          size: widget.cloudSize);
     }).toList();
   }
 }
@@ -164,13 +149,10 @@ class _Cloud extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Transform.scale(
-        scaleX: scale * (flipX ? -1 : 1),
-        scaleY: scale * (flipY ? -1 : 1),
-        child: Image.asset(
-          ImagePaths.cloud,
+      scaleX: scale * (flipX ? -1 : 1),
+      scaleY: scale * (flipY ? -1 : 1),
+      child: Image.asset(ImagePaths.cloud,
           opacity: AlwaysStoppedAnimation(.4 * opacity),
           width: size * scale,
-          fit: BoxFit.fitWidth,
-        ),
-      );
+          fit: BoxFit.fitWidth));
 }

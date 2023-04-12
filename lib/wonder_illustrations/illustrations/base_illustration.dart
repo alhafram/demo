@@ -3,20 +3,22 @@ import 'package:demo/wonder_illustrations/illustration_piece.dart';
 import 'package:demo/wonder_illustrations/illustrations/view_models.dart';
 import 'package:demo/wonder_illustrations/paint_textures.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_builder.dart';
+import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
 import 'package:flutter/material.dart';
 
 class BaseIllustration extends StatelessWidget {
   final IllustrationViewModel illustrationViewModel;
+  final WonderIllustrationConfig config;
 
-  const BaseIllustration({super.key, required this.illustrationViewModel});
+  const BaseIllustration(
+      {super.key, required this.illustrationViewModel, required this.config});
   @override
   Widget build(BuildContext context) {
     return WonderIllustrationBuilder(
-        config: illustrationViewModel.config,
+        config: config,
         bgBuilder: _buildBg,
         mgBuilder: _buildMg,
-        fgBuilder: _buildFg,
-        wonderType: illustrationViewModel.sessionType);
+        fgBuilder: _buildFg);
   }
 
   List<Widget> _buildBg(BuildContext context, Animation<double> anim) {

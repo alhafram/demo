@@ -1,13 +1,7 @@
-import 'package:demo/wonder_illustrations/illustrations/wonder_type.dart';
 import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-/// Takes a builder for each of the 3 illustration layers.
-/// Each builder returns a list of Widgets which will be added directly to a Stack.
-/// Checks the config, and only calls builders that are currently enabled.
-///
-/// Also manages an AnimationController that is passed to each layer if it would like to animate itself on or off screen.
 class WonderIllustrationBuilder extends StatefulWidget {
   const WonderIllustrationBuilder({
     Key? key,
@@ -15,7 +9,6 @@ class WonderIllustrationBuilder extends StatefulWidget {
     required this.fgBuilder,
     required this.mgBuilder,
     required this.bgBuilder,
-    required this.wonderType,
   }) : super(key: key);
   final List<Widget> Function(BuildContext context, Animation<double> animation)
       fgBuilder;
@@ -24,7 +17,6 @@ class WonderIllustrationBuilder extends StatefulWidget {
   final List<Widget> Function(BuildContext context, Animation<double> animation)
       bgBuilder;
   final WonderIllustrationConfig config;
-  final SessionType wonderType;
 
   @override
   State<WonderIllustrationBuilder> createState() =>
@@ -60,7 +52,6 @@ class WonderIllustrationBuilderState extends State<WonderIllustrationBuilder>
 
   @override
   Widget build(BuildContext context) {
-    // Optimization: no need to return all of these children if the widget is fully invisible.
     if (anim.value == 0 && widget.config.enableAnims) {
       return const SizedBox.expand();
     }
@@ -68,15 +59,11 @@ class WonderIllustrationBuilderState extends State<WonderIllustrationBuilder>
         widget.config.enableAnims ? anim : const AlwaysStoppedAnimation(1);
 
     return Provider<WonderIllustrationBuilderState>.value(
-      value: this,
-      child: Stack(
-        key: ValueKey(animation.value == 0),
-        children: [
+        value: this,
+        child: Stack(key: ValueKey(animation.value == 0), children: [
           if (widget.config.enableBg) ...widget.bgBuilder(context, animation),
           if (widget.config.enableMg) ...widget.mgBuilder(context, animation),
-          if (widget.config.enableFg) ...widget.fgBuilder(context, animation),
-        ],
-      ),
-    );
+          if (widget.config.enableFg) ...widget.fgBuilder(context, animation)
+        ]));
   }
 }

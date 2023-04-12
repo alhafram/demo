@@ -1,5 +1,3 @@
-import 'package:demo/wonder_illustrations/illustrations/wonder_type.dart';
-import 'package:demo/wonder_illustrations/wonder_illustration_config.dart';
 import 'package:flutter/material.dart';
 
 class IllustrationBackgroundViewModel {
@@ -87,16 +85,15 @@ class IllustrationTextureViewModel {
 }
 
 class IllustrationViewModel {
-  final WonderIllustrationConfig config;
-  final SessionType sessionType;
-
+  final int id;
+  final Color bgColor;
   final IllustrationBackgroundViewModel backgroundViewModel;
   final IllustrationMiddlegroundViewModel middlegroundViewModel;
   final IllustrationForegroundViewModel illustrationForegroundViewModel;
 
   IllustrationViewModel(
-      {required this.config,
-      required this.sessionType,
+      {required this.id,
+      required this.bgColor,
       required this.backgroundViewModel,
       required this.middlegroundViewModel,
       required this.illustrationForegroundViewModel});
