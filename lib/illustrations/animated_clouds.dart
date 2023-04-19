@@ -2,13 +2,12 @@ import 'dart:async';
 import 'package:demo/assets.dart';
 import 'package:demo/illustrations/context_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:rnd/rnd.dart';
 import 'package:sized_context/sized_context.dart';
 export 'package:rnd/rnd.dart';
 
-class AnimatedClouds extends StatefulWidget with GetItStatefulWidgetMixin {
-  AnimatedClouds(
+class AnimatedClouds extends StatefulWidget {
+  const AnimatedClouds(
       {Key? key,
       this.enableAnimations = true,
       required this.opacity,
@@ -22,7 +21,7 @@ class AnimatedClouds extends StatefulWidget with GetItStatefulWidgetMixin {
 }
 
 class _AnimatedCloudsState extends State<AnimatedClouds>
-    with SingleTickerProviderStateMixin, GetItStateMixin {
+    with SingleTickerProviderStateMixin {
   late List<_Cloud> _clouds = [];
   List<_Cloud> _oldClouds = [];
   late final AnimationController _anim = AnimationController(
