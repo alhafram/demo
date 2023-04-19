@@ -4,14 +4,10 @@ import 'package:demo/illustrations/view_models.dart';
 import 'package:flutter/material.dart';
 
 class DataSource {
-  List<IllustrationViewModel> all = [];
-
-  int currentId = 0;
-
-  bool isSelected(int id) => id == currentId;
+  List<IllustrationViewModel> viewModels = [];
 
   DataSource() {
-    all = [
+    viewModels = [
       IllustrationViewModel(
           id: 0,
           bgColor: const Color(0xFF642828),
