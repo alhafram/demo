@@ -5,6 +5,8 @@ import 'package:demo/illustrations/paint_textures.dart';
 import 'package:demo/illustrations/illustration_builder.dart';
 import 'package:demo/illustrations/illustration_config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:demo/home_screen_provider.dart';
 
 class BaseIllustration extends StatelessWidget {
   final IllustrationViewModel illustrationViewModel;
@@ -32,9 +34,11 @@ class BaseIllustration extends StatelessWidget {
                   illustrationViewModel.backgroundViewModel.textureViewModel,
               opacity: anim.drive(illustrationViewModel
                   .backgroundViewModel.textureViewModel.tween))),
-      IllustrationPiece.withViewModel(
-          viewModel: illustrationViewModel
-              .backgroundViewModel.illustrationPieceViewModel)
+      ChangeNotifierProvider(
+          create: (_) => IllustrationPieceProvider(),
+          child: IllustrationPiece.withViewModel(
+              viewModel: illustrationViewModel
+                  .backgroundViewModel.illustrationPieceViewModel))
     ];
   }
 
@@ -43,9 +47,11 @@ class BaseIllustration extends StatelessWidget {
       return [
         Transform.translate(
             offset: illustrationViewModel.middlegroundViewModel.offset!,
-            child: IllustrationPiece.withViewModel(
-                viewModel: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel))
+            child: ChangeNotifierProvider(
+                create: (_) => IllustrationPieceProvider(),
+                child: IllustrationPiece.withViewModel(
+                    viewModel: illustrationViewModel
+                        .middlegroundViewModel.illustrationPieceViewModel)))
       ];
     }
     if (illustrationViewModel.middlegroundViewModel.clipBehavior != null) {
@@ -53,9 +59,11 @@ class BaseIllustration extends StatelessWidget {
         ClipRect(
             clipBehavior:
                 illustrationViewModel.middlegroundViewModel.clipBehavior!,
-            child: IllustrationPiece.withViewModel(
-                viewModel: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel))
+            child: ChangeNotifierProvider(
+                create: (_) => IllustrationPieceProvider(),
+                child: IllustrationPiece.withViewModel(
+                    viewModel: illustrationViewModel
+                        .middlegroundViewModel.illustrationPieceViewModel)))
       ];
     }
     if (illustrationViewModel.middlegroundViewModel.heightFactor != null &&
@@ -65,15 +73,19 @@ class BaseIllustration extends StatelessWidget {
             heightFactor:
                 illustrationViewModel.middlegroundViewModel.heightFactor!,
             alignment: illustrationViewModel.middlegroundViewModel.alignment!,
-            child: IllustrationPiece.withViewModel(
-                viewModel: illustrationViewModel
-                    .middlegroundViewModel.illustrationPieceViewModel))
+            child: ChangeNotifierProvider(
+                create: (_) => IllustrationPieceProvider(),
+                child: IllustrationPiece.withViewModel(
+                    viewModel: illustrationViewModel
+                        .middlegroundViewModel.illustrationPieceViewModel)))
       ];
     }
     return [
-      IllustrationPiece.withViewModel(
-          viewModel: illustrationViewModel
-              .middlegroundViewModel.illustrationPieceViewModel)
+      ChangeNotifierProvider(
+          create: (_) => IllustrationPieceProvider(),
+          child: IllustrationPiece.withViewModel(
+              viewModel: illustrationViewModel
+                  .middlegroundViewModel.illustrationPieceViewModel))
     ];
   }
 
@@ -81,7 +93,9 @@ class BaseIllustration extends StatelessWidget {
     var list = List<Widget>.empty(growable: true);
     for (var viewModel
         in illustrationViewModel.illustrationForegroundViewModel.viewModels) {
-      list.add(IllustrationPiece.withViewModel(viewModel: viewModel));
+      list.add(ChangeNotifierProvider(
+          create: (_) => IllustrationPieceProvider(),
+          child: IllustrationPiece.withViewModel(viewModel: viewModel)));
     }
     return list;
   }

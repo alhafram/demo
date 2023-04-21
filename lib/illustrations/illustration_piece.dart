@@ -1,13 +1,12 @@
 import 'dart:math';
-import 'dart:ui' as ui;
+import 'package:demo/home_screen_provider.dart';
 import 'package:demo/illustrations/view_models.dart';
 import 'package:demo/illustrations/illustration_builder.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sized_context/sized_context.dart';
 
-class IllustrationPiece extends StatefulWidget {
+class IllustrationPiece extends StatelessWidget {
   const IllustrationPiece(
       {Key? key,
       required this.fileName,
@@ -66,29 +65,20 @@ class IllustrationPiece extends StatefulWidget {
   final double dynamicHzOffset;
 
   @override
-  State<IllustrationPiece> createState() => _IllustrationPieceState();
-}
-
-class _IllustrationPieceState extends State<IllustrationPiece> {
-  double? aspectRatio;
-  ui.Image? uiImage;
-  @override
   Widget build(BuildContext context) {
     final builder = context.watch<IllustrationBuilderState>();
-    final imgPath = widget.fileName;
+    final ipProvider = context.read<IllustrationPieceProvider>();
+    final imgPath = fileName;
     // Dynamically determine the aspect ratio of the image, so we can more easily position it
-    if (aspectRatio == null) {
-      aspectRatio == 0; // indicates load has started, so we don't run twice
-      rootBundle.load(widget.fileName).then((img) async {
-        uiImage = await decodeImageFromList(img.buffer.asUint8List());
-        if (!mounted) return;
-        setState(() => aspectRatio = uiImage!.width / uiImage!.height);
-      });
+    if (ipProvider.aspectRatio == null) {
+      ipProvider.aspectRatio =
+          0; // indicates load has started, so we don't run twice
+      ipProvider.load(fileName);
     }
     return Align(
-        alignment: widget.alignment,
+        alignment: alignment,
         child: LayoutBuilder(
-            key: ValueKey(aspectRatio),
+            key: ValueKey(ipProvider.aspectRatio),
             builder: (_, constraints) {
               final anim = builder.anim;
               final curvedAnim = Curves.easeOut.transform(anim.value);
@@ -98,44 +88,42 @@ class _IllustrationPieceState extends State<IllustrationPiece> {
               // Add overflow box so image doesn't get clipped as we translate it around
               img = OverflowBox(maxWidth: 2500, child: img);
 
-              final double introZoom =
-                  (widget.initialScale - 1) * (1 - curvedAnim);
+              final double introZoom = (initialScale - 1) * (1 - curvedAnim);
 
               /// Determine target height
-              final double height = max(widget.minHeight ?? 0,
-                  constraints.maxHeight * widget.heightFactor);
+              final double height =
+                  max(minHeight ?? 0, constraints.maxHeight * heightFactor);
 
               /// Combine all the translations, initial + offset + dynamicHzOffset + fractionalOffset
-              Offset finalTranslation = widget.offset;
+              Offset finalTranslation = offset;
               // Initial
-              if (widget.initialOffset != Offset.zero) {
-                finalTranslation += widget.initialOffset * (1 - curvedAnim);
+              if (initialOffset != Offset.zero) {
+                finalTranslation += initialOffset * (1 - curvedAnim);
               }
               // Dynamic
               final dynamicOffsetAmt =
                   ((context.widthPx - 400) / 1100).clamp(0, 1);
-              finalTranslation +=
-                  Offset(dynamicOffsetAmt * widget.dynamicHzOffset, 0);
+              finalTranslation += Offset(dynamicOffsetAmt * dynamicHzOffset, 0);
               // Fractional
-              final width = height * (aspectRatio ?? 0);
-              if (widget.fractionalOffset != null) {
-                finalTranslation += Offset(widget.fractionalOffset!.dx * width,
-                    height * widget.fractionalOffset!.dy);
+              final width = height * (ipProvider.aspectRatio ?? 0);
+              if (fractionalOffset != null) {
+                finalTranslation += Offset(fractionalOffset!.dx * width,
+                    height * fractionalOffset!.dy);
               }
               Widget? content;
-              if (uiImage != null) {
+              if (ipProvider.uiImage != null) {
                 content = Transform.translate(
                     offset: finalTranslation,
                     child: Transform.scale(
-                        scale: 1 + (widget.zoomAmt * config.zoom) + introZoom,
+                        scale: 1 + (zoomAmt * config.zoom) + introZoom,
                         child: SizedBox(
                             height: height,
-                            width: height * aspectRatio!,
+                            width: height * ipProvider.aspectRatio!,
                             child: img)));
               }
 
               return Stack(children: [
-                if (uiImage != null) ...[content!]
+                if (ipProvider.uiImage != null) ...[content!]
               ]);
             }));
   }
