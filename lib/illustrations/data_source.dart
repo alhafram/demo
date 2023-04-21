@@ -11,6 +11,7 @@ class DataSource {
       IllustrationViewModel(
           id: 0,
           bgColor: const Color(0xFF642828),
+          cloudSeed: 500,
           backgroundViewModel: IllustrationBackgroundViewModel(
               color: ColorUtils.shiftHsl(const Color(0xFF688750), .15),
               textureViewModel: IllustrationTextureViewModel(ImagePaths.roller2,
@@ -55,8 +56,9 @@ class DataSource {
                   zoomAmt: .05,
                   fractionalOffset: const Offset(0, -.15)))),
       IllustrationViewModel(
-          bgColor: const Color(0xFF444B9B),
           id: 1,
+          bgColor: const Color(0xFF444B9B),
+          cloudSeed: 111,
           backgroundViewModel: IllustrationBackgroundViewModel(
               color: const Color(0xFF1B1A65),
               textureViewModel: IllustrationTextureViewModel(ImagePaths.roller1,
@@ -102,6 +104,7 @@ class DataSource {
       IllustrationViewModel(
           id: 2,
           bgColor: const Color(0xFF1E736D),
+          cloudSeed: 1,
           backgroundViewModel: IllustrationBackgroundViewModel(
               color: ColorUtils.shiftHsl(const Color(0xFF4AA39D), .15),
               textureViewModel: IllustrationTextureViewModel(ImagePaths.roller1,
@@ -112,9 +115,7 @@ class DataSource {
                   fileName: 'assets/images/colosseum/sun.png',
                   initialOffset: const Offset(0, 50),
                   heightFactor: .25,
-                  minHeight: 100
-                  // offset: Offset(80, context.heightPx * -.28) // ?????/
-                  )),
+                  minHeight: 100)),
           illustrationForegroundViewModel:
               IllustrationForegroundViewModel(viewModels: [
             IllustrationPieceViewModel(
@@ -147,6 +148,7 @@ class DataSource {
       IllustrationViewModel(
           id: 3,
           bgColor: const Color(0xFF164F2A),
+          cloudSeed: 2,
           backgroundViewModel: IllustrationBackgroundViewModel(
               color: const Color(0xFFE2CFBB),
               textureViewModel: IllustrationTextureViewModel(ImagePaths.roller2,
@@ -209,6 +211,7 @@ class DataSource {
       IllustrationViewModel(
           id: 4,
           bgColor: const Color(0xFF1C4D46),
+          cloudSeed: 78,
           backgroundViewModel: IllustrationBackgroundViewModel(
               color: const Color(0xFFED7967),
               textureViewModel: IllustrationTextureViewModel(ImagePaths.roller1,
@@ -256,6 +259,7 @@ class DataSource {
       IllustrationViewModel(
           id: 5,
           bgColor: const Color(0xFF16184D),
+          cloudSeed: 15,
           backgroundViewModel: IllustrationBackgroundViewModel(
               color: const Color(0xFF444B9B),
               textureViewModel: IllustrationTextureViewModel(ImagePaths.roller2,
@@ -301,6 +305,7 @@ class DataSource {
       IllustrationViewModel(
           id: 6,
           bgColor: const Color(0xFFC96454),
+          cloudSeed: 2,
           backgroundViewModel: IllustrationBackgroundViewModel(
               color: const Color(0xFF642828),
               textureViewModel: IllustrationTextureViewModel(ImagePaths.roller2,
@@ -344,6 +349,7 @@ class DataSource {
       IllustrationViewModel(
           id: 7,
           bgColor: const Color(0xFF0E4064),
+          cloudSeed: 37,
           backgroundViewModel: IllustrationBackgroundViewModel(
               color: const Color(0xFF0E4064),
               textureViewModel: IllustrationTextureViewModel(ImagePaths.roller1,

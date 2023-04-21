@@ -80,6 +80,7 @@ class IllustrationTextureViewModel {
 class IllustrationViewModel {
   final int id;
   final Color bgColor;
+  final int cloudSeed;
   final IllustrationBackgroundViewModel backgroundViewModel;
   final IllustrationMiddlegroundViewModel middlegroundViewModel;
   final IllustrationForegroundViewModel illustrationForegroundViewModel;
@@ -87,6 +88,7 @@ class IllustrationViewModel {
   IllustrationViewModel(
       {required this.id,
       required this.bgColor,
+      required this.cloudSeed,
       required this.backgroundViewModel,
       required this.middlegroundViewModel,
       required this.illustrationForegroundViewModel});

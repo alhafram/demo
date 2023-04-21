@@ -11,10 +11,12 @@ class AnimatedClouds extends StatefulWidget {
       {Key? key,
       this.enableAnimations = true,
       required this.opacity,
+      required this.cloudSeed,
       this.cloudSize = 500})
       : super(key: key);
   final bool enableAnimations;
   final double opacity;
+  final int cloudSeed;
   final double cloudSize;
   @override
   State<AnimatedClouds> createState() => _AnimatedCloudsState();
@@ -50,29 +52,6 @@ class _AnimatedCloudsState extends State<AnimatedClouds>
       _showClouds();
     }
     super.didUpdateWidget(oldWidget);
-  }
-
-// Прокинуть сюда seed
-  int _getCloudSeed() {
-    return 2;
-    // switch (type) {
-    //   case SessionType.chichenItza:
-    //     return 2;
-    //   case SessionType.christRedeemer:
-    //     return 78;
-    //   case SessionType.colosseum:
-    //     return 1;
-    //   case SessionType.greatWall:
-    //     return 500;
-    //   case SessionType.machuPicchu:
-    //     return 37;
-    //   case SessionType.petra:
-    //     return 111;
-    //   case SessionType.pyramidsGiza:
-    //     return 15;
-    //   case SessionType.tajMahal:
-    //     return 2;
-    // }
   }
 
   void _showClouds() {
@@ -116,7 +95,8 @@ class _AnimatedCloudsState extends State<AnimatedClouds>
 
   List<_Cloud> _getClouds() {
     Size size = ContextUtils.getSize(context) ?? Size(context.widthPx, 400);
-    rndSeed = _getCloudSeed();
+    rndSeed = widget.cloudSeed;
+    print(widget.cloudSeed);
     return List<_Cloud>.generate(3, (index) {
       return _Cloud(
           Offset(rnd.getDouble(-200, size.width - 100),

@@ -52,8 +52,11 @@ class HomeScreen extends StatelessWidget {
         return BaseIllustration(
             illustrationViewModel: provider.viewModels[e.id], config: config);
       }).toList(),
-      const FractionallySizedBox(
-          widthFactor: 1, heightFactor: .5, child: AnimatedClouds(opacity: 1))
+      FractionallySizedBox(
+          widthFactor: 1,
+          heightFactor: .5,
+          child: AnimatedClouds(
+              opacity: 1, cloudSeed: provider.selectedViewModel.cloudSeed))
     ];
   }
 
