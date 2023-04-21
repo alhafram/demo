@@ -96,7 +96,6 @@ class _AnimatedCloudsState extends State<AnimatedClouds>
   List<_Cloud> _getClouds() {
     Size size = ContextUtils.getSize(context) ?? Size(context.widthPx, 400);
     rndSeed = widget.cloudSeed;
-    print(widget.cloudSeed);
     return List<_Cloud>.generate(3, (index) {
       return _Cloud(
           Offset(rnd.getDouble(-200, size.width - 100),

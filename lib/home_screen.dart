@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildMgPageView(BuildContext context) {
-    var provider = context.read<HomeScreenProvider>();
+    var provider = context.watch<HomeScreenProvider>();
     return ExcludeSemantics(
         child: PageView.builder(
             controller: _pageController,
