@@ -14,7 +14,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = context.read<HomeScreenProvider>();
-    provider.setup();
     _pageController =
         PageController(viewportFraction: 1, initialPage: provider.count * 9999);
     return Container(
@@ -53,7 +52,7 @@ class HomeScreen extends StatelessWidget {
         return BaseIllustration(
             illustrationViewModel: provider.viewModels[e.id], config: config);
       }).toList(),
-      FractionallySizedBox(
+      const FractionallySizedBox(
           widthFactor: 1, heightFactor: .5, child: AnimatedClouds(opacity: 1))
     ];
   }

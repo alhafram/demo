@@ -7,11 +7,9 @@ import 'dart:ui' as ui show Image;
 class HomeScreenProvider extends ChangeNotifier {
   final DataSource _dataSource = DataSource();
 
-  int _currentId = 0;
+  int currentId = 0;
 
-  bool isSelected(int id) => id == _currentId;
-
-  late IllustrationViewModel selectedViewModel;
+  bool isSelected(int id) => id == currentId;
 
   List<IllustrationViewModel> get viewModels {
     return _dataSource.viewModels;
@@ -21,13 +19,12 @@ class HomeScreenProvider extends ChangeNotifier {
     return viewModels.length;
   }
 
-  setup() {
-    selectedViewModel = viewModels[0];
+  IllustrationViewModel get selectedViewModel {
+    return viewModels[currentId];
   }
 
   void changeCurrentId(int newId) {
-    _currentId = newId % viewModels.length;
-    selectedViewModel = viewModels[_currentId];
+    currentId = newId % viewModels.length;
     notifyListeners();
   }
 }
