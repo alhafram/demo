@@ -21,7 +21,6 @@ class DataSource {
               illustrationPieceViewModel: IllustrationPieceViewModel(
                   fileName: 'assets/images/great_wall_of_china/sun.png',
                   initialOffset: const Offset(0, 50),
-                  enableHero: true,
                   heightFactor: .25,
                   minHeight: 120,
                   offset: const Offset(-65, -300))),
@@ -54,7 +53,6 @@ class DataSource {
                   heightFactor: .65,
                   minHeight: 250,
                   zoomAmt: .05,
-                  enableHero: true,
                   fractionalOffset: const Offset(0, -.15)))),
       IllustrationViewModel(
           bgColor: const Color(0xFF444B9B),
@@ -100,7 +98,6 @@ class DataSource {
                   heightFactor: .65,
                   minHeight: 500,
                   zoomAmt: -1,
-                  enableHero: true,
                   fractionalOffset: Offset.zero))),
       IllustrationViewModel(
           id: 2,
@@ -114,7 +111,6 @@ class DataSource {
               illustrationPieceViewModel: IllustrationPieceViewModel(
                   fileName: 'assets/images/colosseum/sun.png',
                   initialOffset: const Offset(0, 50),
-                  enableHero: true,
                   heightFactor: .25,
                   minHeight: 100
                   // offset: Offset(80, context.heightPx * -.28) // ?????/
@@ -144,7 +140,6 @@ class DataSource {
           middlegroundViewModel: IllustrationMiddlegroundViewModel(
               illustrationPieceViewModel: IllustrationPieceViewModel(
                   fileName: 'assets/images/colosseum/colosseum.png',
-                  enableHero: true,
                   heightFactor: .6,
                   minHeight: 200,
                   zoomAmt: .15,
@@ -162,7 +157,6 @@ class DataSource {
               illustrationPieceViewModel: IllustrationPieceViewModel(
                   fileName: 'assets/images/chichen_itza/sun.png',
                   initialOffset: const Offset(0, 50),
-                  enableHero: true,
                   heightFactor: .4,
                   minHeight: 200,
                   fractionalOffset: const Offset(.55, -.35))),
@@ -211,8 +205,7 @@ class DataSource {
                   fileName: 'assets/images/chichen_itza/chichen.png',
                   heightFactor: .4,
                   minHeight: 180,
-                  zoomAmt: -.1,
-                  enableHero: true))),
+                  zoomAmt: -.1))),
       IllustrationViewModel(
           id: 4,
           bgColor: const Color(0xFF1C4D46),
@@ -226,7 +219,6 @@ class DataSource {
               illustrationPieceViewModel: IllustrationPieceViewModel(
                   fileName: 'assets/images/christ_the_redeemer/sun.png',
                   initialOffset: const Offset(0, 50),
-                  enableHero: true,
                   heightFactor: .25,
                   minHeight: 120,
                   fractionalOffset: const Offset(.7, -1.35))),
@@ -257,7 +249,6 @@ class DataSource {
               clipBehavior: Clip.none,
               illustrationPieceViewModel: IllustrationPieceViewModel(
                   fileName: 'assets/images/christ_the_redeemer/redeemer.png',
-                  enableHero: true,
                   heightFactor: 1,
                   alignment: Alignment.bottomCenter,
                   fractionalOffset: const Offset(0, .1),
@@ -275,7 +266,6 @@ class DataSource {
               illustrationPieceViewModel: IllustrationPieceViewModel(
                   fileName: 'assets/images/pyramids/moon.png',
                   initialOffset: const Offset(0, 50),
-                  enableHero: true,
                   heightFactor: .15,
                   minHeight: 100,
                   offset: const Offset(120, -200), // 1//
@@ -304,7 +294,6 @@ class DataSource {
           middlegroundViewModel: IllustrationMiddlegroundViewModel(
               illustrationPieceViewModel: IllustrationPieceViewModel(
                   fileName: 'assets/images/pyramids/pyramids.png',
-                  enableHero: true,
                   heightFactor: .5,
                   minHeight: 300,
                   zoomAmt: -2,
@@ -322,7 +311,6 @@ class DataSource {
               illustrationPieceViewModel: IllustrationPieceViewModel(
                   fileName: 'assets/images/taj_mahal/sun.png',
                   initialOffset: const Offset(0, 50),
-                  enableHero: true,
                   heightFactor: .3,
                   minHeight: 140,
                   offset: const Offset(-150, -200))), //??
@@ -351,7 +339,6 @@ class DataSource {
                   fileName: 'assets/images/taj_mahal/taj-mahal.png',
                   heightFactor: .6,
                   minHeight: 230,
-                  enableHero: true,
                   zoomAmt: .05,
                   fractionalOffset: const Offset(0, -.15)))),
       IllustrationViewModel(
@@ -367,7 +354,6 @@ class DataSource {
               illustrationPieceViewModel: IllustrationPieceViewModel(
                   fileName: 'assets/images/machu_picchu/sun.png',
                   initialOffset: const Offset(0, 50),
-                  enableHero: true,
                   heightFactor: .15,
                   minHeight: 100,
                   offset: const Offset(150, -200))),
@@ -398,7 +384,6 @@ class DataSource {
                   heightFactor: .65,
                   minHeight: 230,
                   zoomAmt: -1,
-                  enableHero: true,
                   fractionalOffset: const Offset(-.05, -.12))))
     ];
   }

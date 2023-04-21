@@ -18,7 +18,6 @@ class IllustrationPiece extends StatefulWidget {
       this.fractionalOffset,
       this.zoomAmt = 0,
       this.initialOffset = Offset.zero,
-      this.enableHero = false,
       this.initialScale = 1,
       this.dynamicHzOffset = 0})
       : super(key: key);
@@ -34,7 +33,6 @@ class IllustrationPiece extends StatefulWidget {
         fractionalOffset: viewModel.fractionalOffset,
         zoomAmt: viewModel.zoomAmt,
         initialOffset: viewModel.initialOffset,
-        enableHero: viewModel.enableHero,
         initialScale: viewModel.initialScale,
         dynamicHzOffset: viewModel.dynamicHzOffset);
   }
@@ -63,9 +61,6 @@ class IllustrationPiece extends StatefulWidget {
 
   /// The % amount that this object should scale up as the user drags their finger up the screen
   final double zoomAmt;
-
-  /// Adds a hero tag to this piece, made from wonderType + fileName
-  final bool enableHero;
 
   /// Max px offset of the piece as the screen size grows horizontally
   final double dynamicHzOffset;
@@ -140,11 +135,7 @@ class _IllustrationPieceState extends State<IllustrationPiece> {
               }
 
               return Stack(children: [
-                if (uiImage != null) ...[
-                  widget.enableHero
-                      ? Hero(tag: widget.fileName, child: content!)
-                      : content!
-                ]
+                if (uiImage != null) ...[content!]
               ]);
             }));
   }

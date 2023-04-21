@@ -41,25 +41,18 @@ class IllustrationPieceViewModel {
   final double dynamicHzOffset;
   final double? minHeight;
   final Offset offset;
-  final bool enableHero;
-  final Widget Function(BuildContext context)? top;
-  final Widget Function(BuildContext context)? bottom;
 
-  IllustrationPieceViewModel({
-    required this.fileName,
-    required this.heightFactor,
-    this.alignment = Alignment.center,
-    this.minHeight,
-    this.offset = Offset.zero,
-    this.fractionalOffset,
-    this.zoomAmt = 0,
-    this.initialOffset = Offset.zero,
-    this.enableHero = false,
-    this.initialScale = 1,
-    this.dynamicHzOffset = 0,
-    this.top,
-    this.bottom,
-  });
+  IllustrationPieceViewModel(
+      {required this.fileName,
+      required this.heightFactor,
+      this.alignment = Alignment.center,
+      this.minHeight,
+      this.offset = Offset.zero,
+      this.fractionalOffset,
+      this.zoomAmt = 0,
+      this.initialOffset = Offset.zero,
+      this.initialScale = 1,
+      this.dynamicHzOffset = 0});
 }
 
 class IllustrationForegroundViewModel {
