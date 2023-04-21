@@ -8,22 +8,20 @@ import 'package:provider/provider.dart';
 import 'package:sized_context/sized_context.dart';
 
 class IllustrationPiece extends StatefulWidget {
-  const IllustrationPiece({
-    Key? key,
-    required this.fileName,
-    required this.heightFactor,
-    this.alignment = Alignment.center,
-    this.minHeight,
-    this.offset = Offset.zero,
-    this.fractionalOffset,
-    this.zoomAmt = 0,
-    this.initialOffset = Offset.zero,
-    this.enableHero = false,
-    this.initialScale = 1,
-    this.dynamicHzOffset = 0,
-    this.top,
-    this.bottom,
-  }) : super(key: key);
+  const IllustrationPiece(
+      {Key? key,
+      required this.fileName,
+      required this.heightFactor,
+      this.alignment = Alignment.center,
+      this.minHeight,
+      this.offset = Offset.zero,
+      this.fractionalOffset,
+      this.zoomAmt = 0,
+      this.initialOffset = Offset.zero,
+      this.enableHero = false,
+      this.initialScale = 1,
+      this.dynamicHzOffset = 0})
+      : super(key: key);
 
   factory IllustrationPiece.withViewModel(
       {required IllustrationPieceViewModel viewModel}) {
@@ -38,9 +36,7 @@ class IllustrationPiece extends StatefulWidget {
         initialOffset: viewModel.initialOffset,
         enableHero: viewModel.enableHero,
         initialScale: viewModel.initialScale,
-        dynamicHzOffset: viewModel.dynamicHzOffset,
-        top: null,
-        bottom: null);
+        dynamicHzOffset: viewModel.dynamicHzOffset);
   }
 
   final String fileName;
@@ -73,9 +69,6 @@ class IllustrationPiece extends StatefulWidget {
 
   /// Max px offset of the piece as the screen size grows horizontally
   final double dynamicHzOffset;
-
-  final Widget Function(BuildContext context)? top;
-  final Widget Function(BuildContext context)? bottom;
 
   @override
   State<IllustrationPiece> createState() => _IllustrationPieceState();
@@ -147,15 +140,11 @@ class _IllustrationPieceState extends State<IllustrationPiece> {
               }
 
               return Stack(children: [
-                if (widget.bottom != null)
-                  Positioned.fill(child: widget.bottom!.call(context)),
                 if (uiImage != null) ...[
                   widget.enableHero
                       ? Hero(tag: widget.fileName, child: content!)
                       : content!
-                ],
-                if (widget.top != null)
-                  Positioned.fill(child: widget.top!.call(context))
+                ]
               ]);
             }));
   }
