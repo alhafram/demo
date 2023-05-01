@@ -38,8 +38,10 @@ dependencies:
   sized_context: ^1.0.0+4
   rnd: ^0.2.0
   flutter_animate: ^1.0.0
-  illustration: 
-    path: /Users/albert/Desktop/illustration
+  illustration:
+    # path: /Users/albert/Desktop/illustration
+    git:
+      url: https://github.com/alhafram/illustration
 
 dev_dependencies:
   flutter_test:
