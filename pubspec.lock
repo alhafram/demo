@@ -75,6 +75,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  illustration:
+    dependency: "direct main"
+    description:
+      path: "/Users/albert/Desktop/illustration"
+      relative: false
+    source: path
+    version: "1.0.0"
   js:
     dependency: transitive
     description:
