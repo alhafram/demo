@@ -1,12 +1,13 @@
 import 'package:demo/content_data_source.dart';
-import 'package:demo/home_screen.dart';
-import 'package:illustration/home_screen_provider.dart';
+import 'package:illustration/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:illustration/home_screen_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-      create: (_) => HomeScreenProvider(ContentDataSource()),
+      create: (_) =>
+          HomeScreenProvider(ContentDataSource(delegate: Delegate())),
       child: const MyApp()));
 }
 

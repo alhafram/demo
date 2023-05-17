@@ -4,14 +4,30 @@ import 'package:illustration/color_utils.dart';
 import 'package:illustration/illustrations/data_source.dart';
 import 'package:illustration/illustrations/view_models.dart';
 
+class Delegate implements DataSourceDelegate {
+  @override
+  void pageDidOpened(int id) {
+    print(id);
+  }
+
+  @override
+  void pageDidTapMainButton() {
+    print('tap');
+  }
+}
+
 class ContentDataSource implements DataSource {
   @override
   List<IllustrationViewModel> viewModels = [];
 
-  ContentDataSource() {
+  @override
+  DataSourceDelegate delegate;
+
+  ContentDataSource({required this.delegate}) {
+    delegate = Delegate();
     viewModels = [
       IllustrationViewModel(
-          id: 0,
+          id: 0, // type
           bgColor: const Color(0xFF642828),
           cloudSeed: 500,
           backgroundViewModel: IllustrationBackgroundViewModel(
