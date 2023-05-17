@@ -6,13 +6,13 @@ import 'package:illustration/illustrations/view_models.dart';
 
 class Delegate implements DataSourceDelegate {
   @override
-  void pageDidOpened(int id) {
-    print(id);
+  void pageDidOpened(Type pageType) {
+    print('open $pageType');
   }
 
   @override
-  void pageDidTapMainButton() {
-    print('tap');
+  void pageDidTapMainButton(Type pageType) {
+    print('tap $pageType');
   }
 }
 
@@ -27,7 +27,8 @@ class ContentDataSource implements DataSource {
     delegate = Delegate();
     viewModels = [
       IllustrationViewModel(
-          id: 0, // type
+          id: 0,
+          pageType: Type.fallAsleep,
           bgColor: const Color(0xFF642828),
           cloudSeed: 500,
           backgroundViewModel: IllustrationBackgroundViewModel(
@@ -75,6 +76,7 @@ class ContentDataSource implements DataSource {
                   fractionalOffset: const Offset(0, -.15)))),
       IllustrationViewModel(
           id: 1,
+          pageType: Type.feelBetter,
           bgColor: const Color(0xFF444B9B),
           cloudSeed: 111,
           backgroundViewModel: IllustrationBackgroundViewModel(
@@ -121,6 +123,7 @@ class ContentDataSource implements DataSource {
                   fractionalOffset: Offset.zero))),
       IllustrationViewModel(
           id: 2,
+          pageType: Type.reduceStress,
           bgColor: const Color(0xFF1E736D),
           cloudSeed: 1,
           backgroundViewModel: IllustrationBackgroundViewModel(
@@ -165,6 +168,7 @@ class ContentDataSource implements DataSource {
                   fractionalOffset: const Offset(0, -.1)))),
       IllustrationViewModel(
           id: 3,
+          pageType: Type.calmDown,
           bgColor: const Color(0xFF164F2A),
           cloudSeed: 2,
           backgroundViewModel: IllustrationBackgroundViewModel(
@@ -228,6 +232,7 @@ class ContentDataSource implements DataSource {
                   zoomAmt: -.1))),
       IllustrationViewModel(
           id: 4,
+          pageType: Type.feelRelaxed,
           bgColor: const Color(0xFF1C4D46),
           cloudSeed: 78,
           backgroundViewModel: IllustrationBackgroundViewModel(
@@ -276,6 +281,7 @@ class ContentDataSource implements DataSource {
                   zoomAmt: .7))),
       IllustrationViewModel(
           id: 5,
+          pageType: Type.beCreative,
           bgColor: const Color(0xFF16184D),
           cloudSeed: 15,
           backgroundViewModel: IllustrationBackgroundViewModel(
@@ -322,6 +328,7 @@ class ContentDataSource implements DataSource {
                   fractionalOffset: const Offset(0, -.15)))),
       IllustrationViewModel(
           id: 6,
+          pageType: Type.beCreative,
           bgColor: const Color(0xFFC96454),
           cloudSeed: 2,
           backgroundViewModel: IllustrationBackgroundViewModel(
@@ -366,6 +373,7 @@ class ContentDataSource implements DataSource {
                   fractionalOffset: const Offset(0, -.15)))),
       IllustrationViewModel(
           id: 7,
+          pageType: Type.anotherType,
           bgColor: const Color(0xFF0E4064),
           cloudSeed: 37,
           backgroundViewModel: IllustrationBackgroundViewModel(
