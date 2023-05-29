@@ -4,27 +4,18 @@ import 'package:illustration/color_utils.dart';
 import 'package:illustration/illustrations/data_source.dart';
 import 'package:illustration/illustrations/view_models.dart';
 
-class Delegate implements DataSourceDelegate {
-  @override
-  void pageDidOpened(Type pageType) {
-    print('open $pageType');
-  }
-
-  @override
-  void pageDidTapMainButton(Type pageType) {
-    print('tap $pageType');
-  }
-}
-
 class ContentDataSource implements DataSource {
   @override
   List<IllustrationViewModel> viewModels = [];
 
   @override
-  DataSourceDelegate delegate;
+  DataSourceDelegate? delegate;
 
-  ContentDataSource({required this.delegate}) {
-    delegate = Delegate();
+  void setupDelegate(DataSourceDelegate delegate) {
+    this.delegate = delegate;
+  }
+
+  ContentDataSource() {
     viewModels = [
       IllustrationViewModel(
           id: 0,

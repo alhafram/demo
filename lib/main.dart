@@ -1,14 +1,13 @@
 import 'package:demo/content_data_source.dart';
+import 'package:demo/router.dart';
 import 'package:flutter/material.dart';
 import 'package:illustration/home_screen_provider.dart';
-import 'package:illustration/router.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
     ChangeNotifierProvider(
-        create: (_) =>
-            HomeScreenProvider(ContentDataSource(delegate: Delegate())),
+        create: (_) => HomeScreenProvider(ContentDataSource()),
         child: const MyApp()),
   );
   appRouter.go('/home');
