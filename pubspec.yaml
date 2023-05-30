@@ -39,8 +39,8 @@ dependencies:
   rnd: ^0.2.0
   flutter_animate: ^1.0.0
   go_router: ^6.5.5
-  illustration:
-    path: modules/illustration
+  pager:
+    path: modules/pager
 
 dev_dependencies:
   flutter_test:
