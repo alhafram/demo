@@ -22,21 +22,20 @@ class ContentDataSource implements DataSource {
           pageType: Type.fallAsleep,
           bgColor: const Color(0xFF642828),
           cloudSeed: 500,
-          backgroundViewModel: PageBackgroundViewModel(
-              color: ColorUtils.shiftHsl(const Color(0xFF688750), .15),
-              textureViewModel: PagePieceViewModel(
-                  fileName: ImagePaths.roller2,
-                  color: const Color(0xff688750),
-                  flipX: true,
-                  initialScale: 1.15,
-                  tween: Tween(begin: 0, end: 1)),
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/great_wall_of_china/sun.png',
-                  initialOffset: const Offset(0, 50),
-                  heightFactor: .25,
-                  minHeight: 120,
-                  offset: const Offset(-65, -300))),
-          pageForegroundViewModel: PageForegroundViewModel(viewModels: [
+          color: ColorUtils.shiftHsl(const Color(0xFF688750), .15),
+          textureViewModel: PagePieceViewModel(
+              fileName: ImagePaths.roller2,
+              color: const Color(0xff688750),
+              flipX: true,
+              initialScale: 1.15,
+              tween: Tween(begin: 0, end: 1)),
+          backgroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/great_wall_of_china/sun.png',
+              initialOffset: const Offset(0, 50),
+              heightFactor: .25,
+              minHeight: 120,
+              offset: const Offset(-65, -300)),
+          foregroundViewModels: [
             PagePieceViewModel(
                 fileName:
                     'assets/images/great_wall_of_china/foreground-left.png',
@@ -57,35 +56,35 @@ class ContentDataSource implements DataSource {
                 fractionalOffset: const Offset(.4, .3),
                 zoomAmt: .1,
                 dynamicHzOffset: 150)
-          ]),
-          middlegroundViewModel: PageMiddlegroundViewModel(
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/great_wall_of_china/great-wall.png',
-                  heightFactor: .65,
-                  minHeight: 250,
-                  zoomAmt: .05,
-                  fractionalOffset: const Offset(0, -.15)))),
+          ],
+          middlegroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/great_wall_of_china/great-wall.png',
+              heightFactor: .65,
+              minHeight: 250,
+              zoomAmt: .05,
+              fractionalOffset: const Offset(0, -.15))),
       PageViewModel(
           id: 1,
           pageType: Type.feelBetter,
           bgColor: const Color(0xFF444B9B),
           cloudSeed: 111,
-          backgroundViewModel: PageBackgroundViewModel(
-              color: const Color(0xFF1B1A65),
-              textureViewModel: PagePieceViewModel(
-                  fileName: ImagePaths.roller1,
-                  color: const Color(0xFF444B9B),
-                  flipX: true,
-                  initialScale: 1.15,
-                  tween: Tween(begin: 0, end: 1)),
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/petra/moon.png',
-                  initialOffset: const Offset(0, -150),
-                  heightFactor: .15,
-                  minHeight: 50,
-                  alignment: Alignment.topCenter,
-                  fractionalOffset: const Offset(-.7, 0))),
-          pageForegroundViewModel: PageForegroundViewModel(viewModels: [
+          color: const Color(0xFF1B1A65),
+          heightFactor: .8,
+          alignment: Alignment.bottomCenter,
+          textureViewModel: PagePieceViewModel(
+              fileName: ImagePaths.roller1,
+              color: const Color(0xFF444B9B),
+              flipX: true,
+              initialScale: 1.15,
+              tween: Tween(begin: 0, end: 1)),
+          backgroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/petra/moon.png',
+              initialOffset: const Offset(0, -150),
+              heightFactor: .15,
+              minHeight: 50,
+              alignment: Alignment.topCenter,
+              fractionalOffset: const Offset(-.7, 0)),
+          foregroundViewModels: [
             PagePieceViewModel(
                 fileName: 'assets/images/petra/foreground-left.png',
                 alignment: Alignment.bottomCenter,
@@ -102,34 +101,30 @@ class ContentDataSource implements DataSource {
                 fractionalOffset: const Offset(.55, 0),
                 zoomAmt: .12,
                 dynamicHzOffset: 130)
-          ]),
-          middlegroundViewModel: PageMiddlegroundViewModel(
-              heightFactor: .8,
-              alignment: Alignment.bottomCenter,
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/petra/petra.png',
-                  heightFactor: .65,
-                  minHeight: 500,
-                  zoomAmt: -1,
-                  fractionalOffset: Offset.zero))),
+          ],
+          middlegroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/petra/petra.png',
+              heightFactor: .65,
+              minHeight: 500,
+              zoomAmt: -1,
+              fractionalOffset: Offset.zero)),
       PageViewModel(
           id: 2,
           pageType: Type.reduceStress,
           bgColor: const Color(0xFF1E736D),
           cloudSeed: 1,
-          backgroundViewModel: PageBackgroundViewModel(
-              color: ColorUtils.shiftHsl(const Color(0xFF4AA39D), .15),
-              textureViewModel: PagePieceViewModel(
-                  fileName: ImagePaths.roller1,
-                  color: Colors.white,
-                  initialScale: 1,
-                  tween: Tween(begin: 0, end: 0.75)),
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/colosseum/sun.png',
-                  initialOffset: const Offset(0, 50),
-                  heightFactor: .25,
-                  minHeight: 100)),
-          pageForegroundViewModel: PageForegroundViewModel(viewModels: [
+          color: ColorUtils.shiftHsl(const Color(0xFF4AA39D), .15),
+          textureViewModel: PagePieceViewModel(
+              fileName: ImagePaths.roller1,
+              color: Colors.white,
+              initialScale: 1,
+              tween: Tween(begin: 0, end: 0.75)),
+          backgroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/colosseum/sun.png',
+              initialOffset: const Offset(0, 50),
+              heightFactor: .25,
+              minHeight: 100),
+          foregroundViewModels: [
             PagePieceViewModel(
                 fileName: 'assets/images/colosseum/foreground-left.png',
                 alignment: Alignment.bottomCenter,
@@ -149,34 +144,33 @@ class ContentDataSource implements DataSource {
                 fractionalOffset: const Offset(.5, .25),
                 zoomAmt: .05,
                 dynamicHzOffset: 150)
-          ]),
-          middlegroundViewModel: PageMiddlegroundViewModel(
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/colosseum/colosseum.png',
-                  heightFactor: .6,
-                  minHeight: 200,
-                  zoomAmt: .15,
-                  fractionalOffset: const Offset(0, -.1)))),
+          ],
+          middlegroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/colosseum/colosseum.png',
+              heightFactor: .6,
+              minHeight: 200,
+              zoomAmt: .15,
+              fractionalOffset: const Offset(0, -.1))),
       PageViewModel(
           id: 3,
           pageType: Type.calmDown,
           bgColor: const Color(0xFF164F2A),
           cloudSeed: 2,
-          backgroundViewModel: PageBackgroundViewModel(
-              color: const Color(0xFFE2CFBB),
-              textureViewModel: PagePieceViewModel(
-                  fileName: ImagePaths.roller2,
-                  color: const Color(0xffDC762A),
-                  initialScale: 1.15,
-                  flipY: true,
-                  tween: Tween(begin: 0, end: 0.5)),
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/chichen_itza/sun.png',
-                  initialOffset: const Offset(0, 50),
-                  heightFactor: .4,
-                  minHeight: 200,
-                  fractionalOffset: const Offset(.55, -.35))),
-          pageForegroundViewModel: PageForegroundViewModel(viewModels: [
+          color: const Color(0xFFE2CFBB),
+          offset: const Offset(0, -30),
+          textureViewModel: PagePieceViewModel(
+              fileName: ImagePaths.roller2,
+              color: const Color(0xffDC762A),
+              initialScale: 1.15,
+              flipY: true,
+              tween: Tween(begin: 0, end: 0.5)),
+          backgroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/chichen_itza/sun.png',
+              initialOffset: const Offset(0, 50),
+              heightFactor: .4,
+              minHeight: 200,
+              fractionalOffset: const Offset(.55, -.35)),
+          foregroundViewModels: [
             PagePieceViewModel(
                 fileName: 'assets/images/chichen_itza/foreground-right.png',
                 alignment: Alignment.bottomCenter,
@@ -213,34 +207,32 @@ class ContentDataSource implements DataSource {
                 fractionalOffset: const Offset(.35, -.4),
                 zoomAmt: .05,
                 dynamicHzOffset: -100)
-          ]),
-          middlegroundViewModel: PageMiddlegroundViewModel(
-              offset: const Offset(0, -30),
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/chichen_itza/chichen.png',
-                  heightFactor: .4,
-                  minHeight: 180,
-                  zoomAmt: -.1))),
+          ],
+          middlegroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/chichen_itza/chichen.png',
+              heightFactor: .4,
+              minHeight: 180,
+              zoomAmt: -.1)),
       PageViewModel(
           id: 4,
           pageType: Type.feelRelaxed,
           bgColor: const Color(0xFF1C4D46),
           cloudSeed: 78,
-          backgroundViewModel: PageBackgroundViewModel(
-              color: const Color(0xFFED7967),
-              textureViewModel: PagePieceViewModel(
-                  fileName: ImagePaths.roller1,
-                  color: const Color(0xffFAE5C8),
-                  initialScale: 1.15,
-                  flipX: false,
-                  tween: Tween(begin: 0, end: 0.8)),
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/christ_the_redeemer/sun.png',
-                  initialOffset: const Offset(0, 50),
-                  heightFactor: .25,
-                  minHeight: 120,
-                  fractionalOffset: const Offset(.7, -1.35))),
-          pageForegroundViewModel: PageForegroundViewModel(viewModels: [
+          color: const Color(0xFFED7967),
+          clipBehavior: Clip.none,
+          textureViewModel: PagePieceViewModel(
+              fileName: ImagePaths.roller1,
+              color: const Color(0xffFAE5C8),
+              initialScale: 1.15,
+              flipX: false,
+              tween: Tween(begin: 0, end: 0.8)),
+          backgroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/christ_the_redeemer/sun.png',
+              initialOffset: const Offset(0, 50),
+              heightFactor: .25,
+              minHeight: 120,
+              fractionalOffset: const Offset(.7, -1.35)),
+          foregroundViewModels: [
             PagePieceViewModel(
                 fileName:
                     'assets/images/christ_the_redeemer/foreground-left.png',
@@ -261,36 +253,33 @@ class ContentDataSource implements DataSource {
                 fractionalOffset: const Offset(.35, .2),
                 zoomAmt: .1,
                 dynamicHzOffset: 100)
-          ]),
-          middlegroundViewModel: PageMiddlegroundViewModel(
-              clipBehavior: Clip.none,
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/christ_the_redeemer/redeemer.png',
-                  heightFactor: 1,
-                  alignment: Alignment.bottomCenter,
-                  fractionalOffset: const Offset(0, .1),
-                  zoomAmt: .7))),
+          ],
+          middlegroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/christ_the_redeemer/redeemer.png',
+              heightFactor: 1,
+              alignment: Alignment.bottomCenter,
+              fractionalOffset: const Offset(0, .1),
+              zoomAmt: .7)),
       PageViewModel(
           id: 5,
           pageType: Type.beCreative,
           bgColor: const Color(0xFF16184D),
           cloudSeed: 15,
-          backgroundViewModel: PageBackgroundViewModel(
-              color: const Color(0xFF444B9B),
-              textureViewModel: PagePieceViewModel(
-                  fileName: ImagePaths.roller2,
-                  color: const Color(0xFF797FD8),
-                  initialScale: 1.15,
-                  flipY: true,
-                  tween: Tween(begin: 0, end: 0.75)),
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/pyramids/moon.png',
-                  initialOffset: const Offset(0, 50),
-                  heightFactor: .15,
-                  minHeight: 100,
-                  offset: const Offset(120, -200), // 1//
-                  zoomAmt: .05)),
-          pageForegroundViewModel: PageForegroundViewModel(viewModels: [
+          color: const Color(0xFF444B9B),
+          textureViewModel: PagePieceViewModel(
+              fileName: ImagePaths.roller2,
+              color: const Color(0xFF797FD8),
+              initialScale: 1.15,
+              flipY: true,
+              tween: Tween(begin: 0, end: 0.75)),
+          backgroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/pyramids/moon.png',
+              initialOffset: const Offset(0, 50),
+              heightFactor: .15,
+              minHeight: 100,
+              offset: const Offset(120, -200), // 1//
+              zoomAmt: .05),
+          foregroundViewModels: [
             PagePieceViewModel(
                 fileName: 'assets/images/pyramids/foreground-back.png',
                 alignment: Alignment.bottomCenter,
@@ -309,34 +298,32 @@ class ContentDataSource implements DataSource {
                 fractionalOffset: const Offset(-.09, 0.02),
                 zoomAmt: .25,
                 dynamicHzOffset: -150)
-          ]),
-          middlegroundViewModel: PageMiddlegroundViewModel(
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/pyramids/pyramids.png',
-                  heightFactor: .5,
-                  minHeight: 300,
-                  zoomAmt: -2,
-                  fractionalOffset: const Offset(0, -.15)))),
+          ],
+          middlegroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/pyramids/pyramids.png',
+              heightFactor: .5,
+              minHeight: 300,
+              zoomAmt: -2,
+              fractionalOffset: const Offset(0, -.15))),
       PageViewModel(
           id: 6,
           pageType: Type.beCreative,
           bgColor: const Color(0xFFC96454),
           cloudSeed: 2,
-          backgroundViewModel: PageBackgroundViewModel(
-              color: const Color(0xFF642828),
-              textureViewModel: PagePieceViewModel(
-                  fileName: ImagePaths.roller2,
-                  color: const Color(0xFFC96454),
-                  initialScale: 1.15,
-                  flipY: true,
-                  tween: Tween(begin: 0, end: 0.7)),
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/taj_mahal/sun.png',
-                  initialOffset: const Offset(0, 50),
-                  heightFactor: .3,
-                  minHeight: 140,
-                  offset: const Offset(-150, -200))), //??
-          pageForegroundViewModel: PageForegroundViewModel(viewModels: [
+          color: const Color(0xFF642828),
+          textureViewModel: PagePieceViewModel(
+              fileName: ImagePaths.roller2,
+              color: const Color(0xFFC96454),
+              initialScale: 1.15,
+              flipY: true,
+              tween: Tween(begin: 0, end: 0.7)),
+          backgroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/taj_mahal/sun.png',
+              initialOffset: const Offset(0, 50),
+              heightFactor: .3,
+              minHeight: 140,
+              offset: const Offset(-150, -200)),
+          foregroundViewModels: [
             PagePieceViewModel(
                 fileName: 'assets/images/taj_mahal/foreground-right.png',
                 alignment: Alignment.bottomRight,
@@ -354,34 +341,32 @@ class ContentDataSource implements DataSource {
                 fractionalOffset: const Offset(-.3, 0),
                 zoomAmt: .25,
                 dynamicHzOffset: 0)
-          ]),
-          middlegroundViewModel: PageMiddlegroundViewModel(
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/taj_mahal/taj-mahal.png',
-                  heightFactor: .6,
-                  minHeight: 230,
-                  zoomAmt: .05,
-                  fractionalOffset: const Offset(0, -.15)))),
+          ],
+          middlegroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/taj_mahal/taj-mahal.png',
+              heightFactor: .6,
+              minHeight: 230,
+              zoomAmt: .05,
+              fractionalOffset: const Offset(0, -.15))),
       PageViewModel(
           id: 7,
           pageType: Type.anotherType,
           bgColor: const Color(0xFF0E4064),
           cloudSeed: 37,
-          backgroundViewModel: PageBackgroundViewModel(
-              color: const Color(0xFF0E4064),
-              textureViewModel: PagePieceViewModel(
-                  fileName: ImagePaths.roller1,
-                  color: const Color(0xff1E736D),
-                  flipX: false,
-                  initialScale: 1,
-                  tween: Tween(begin: 0, end: 0.5)),
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/machu_picchu/sun.png',
-                  initialOffset: const Offset(0, 50),
-                  heightFactor: .15,
-                  minHeight: 100,
-                  offset: const Offset(150, -200))),
-          pageForegroundViewModel: PageForegroundViewModel(viewModels: [
+          color: const Color(0xFF0E4064),
+          textureViewModel: PagePieceViewModel(
+              fileName: ImagePaths.roller1,
+              color: const Color(0xff1E736D),
+              flipX: false,
+              initialScale: 1,
+              tween: Tween(begin: 0, end: 0.5)),
+          backgroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/machu_picchu/sun.png',
+              initialOffset: const Offset(0, 50),
+              heightFactor: .15,
+              minHeight: 100,
+              offset: const Offset(150, -200)),
+          foregroundViewModels: [
             PagePieceViewModel(
                 fileName: 'assets/images/machu_picchu/foreground-back.png',
                 alignment: Alignment.bottomCenter,
@@ -400,14 +385,13 @@ class ContentDataSource implements DataSource {
                 fractionalOffset: const Offset(-.35, .4),
                 zoomAmt: .2,
                 dynamicHzOffset: -50)
-          ]),
-          middlegroundViewModel: PageMiddlegroundViewModel(
-              pagePieceViewModel: PagePieceViewModel(
-                  fileName: 'assets/images/machu_picchu/machu-picchu.png',
-                  heightFactor: .65,
-                  minHeight: 230,
-                  zoomAmt: -1,
-                  fractionalOffset: const Offset(-.05, -.12))))
+          ],
+          middlegroundViewModel: PagePieceViewModel(
+              fileName: 'assets/images/machu_picchu/machu-picchu.png',
+              heightFactor: .65,
+              minHeight: 230,
+              zoomAmt: -1,
+              fractionalOffset: const Offset(-.05, -.12)))
     ];
   }
 }
