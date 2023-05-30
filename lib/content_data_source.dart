@@ -24,10 +24,11 @@ class ContentDataSource implements DataSource {
           cloudSeed: 500,
           backgroundViewModel: PageBackgroundViewModel(
               color: ColorUtils.shiftHsl(const Color(0xFF688750), .15),
-              textureViewModel: PageTextureViewModel(ImagePaths.roller2,
+              textureViewModel: PagePieceViewModel(
+                  fileName: ImagePaths.roller2,
                   color: const Color(0xff688750),
                   flipX: true,
-                  scale: 1.15,
+                  initialScale: 1.15,
                   tween: Tween(begin: 0, end: 1)),
               pagePieceViewModel: PagePieceViewModel(
                   fileName: 'assets/images/great_wall_of_china/sun.png',
@@ -71,10 +72,11 @@ class ContentDataSource implements DataSource {
           cloudSeed: 111,
           backgroundViewModel: PageBackgroundViewModel(
               color: const Color(0xFF1B1A65),
-              textureViewModel: PageTextureViewModel(ImagePaths.roller1,
+              textureViewModel: PagePieceViewModel(
+                  fileName: ImagePaths.roller1,
                   color: const Color(0xFF444B9B),
                   flipX: true,
-                  scale: 1.15,
+                  initialScale: 1.15,
                   tween: Tween(begin: 0, end: 1)),
               pagePieceViewModel: PagePieceViewModel(
                   fileName: 'assets/images/petra/moon.png',
@@ -117,9 +119,10 @@ class ContentDataSource implements DataSource {
           cloudSeed: 1,
           backgroundViewModel: PageBackgroundViewModel(
               color: ColorUtils.shiftHsl(const Color(0xFF4AA39D), .15),
-              textureViewModel: PageTextureViewModel(ImagePaths.roller1,
+              textureViewModel: PagePieceViewModel(
+                  fileName: ImagePaths.roller1,
                   color: Colors.white,
-                  scale: 1,
+                  initialScale: 1,
                   tween: Tween(begin: 0, end: 0.75)),
               pagePieceViewModel: PagePieceViewModel(
                   fileName: 'assets/images/colosseum/sun.png',
@@ -161,9 +164,10 @@ class ContentDataSource implements DataSource {
           cloudSeed: 2,
           backgroundViewModel: PageBackgroundViewModel(
               color: const Color(0xFFE2CFBB),
-              textureViewModel: PageTextureViewModel(ImagePaths.roller2,
+              textureViewModel: PagePieceViewModel(
+                  fileName: ImagePaths.roller2,
                   color: const Color(0xffDC762A),
-                  scale: 1.15,
+                  initialScale: 1.15,
                   flipY: true,
                   tween: Tween(begin: 0, end: 0.5)),
               pagePieceViewModel: PagePieceViewModel(
@@ -224,9 +228,10 @@ class ContentDataSource implements DataSource {
           cloudSeed: 78,
           backgroundViewModel: PageBackgroundViewModel(
               color: const Color(0xFFED7967),
-              textureViewModel: PageTextureViewModel(ImagePaths.roller1,
+              textureViewModel: PagePieceViewModel(
+                  fileName: ImagePaths.roller1,
                   color: const Color(0xffFAE5C8),
-                  scale: 1.15,
+                  initialScale: 1.15,
                   flipX: false,
                   tween: Tween(begin: 0, end: 0.8)),
               pagePieceViewModel: PagePieceViewModel(
@@ -272,9 +277,10 @@ class ContentDataSource implements DataSource {
           cloudSeed: 15,
           backgroundViewModel: PageBackgroundViewModel(
               color: const Color(0xFF444B9B),
-              textureViewModel: PageTextureViewModel(ImagePaths.roller2,
+              textureViewModel: PagePieceViewModel(
+                  fileName: ImagePaths.roller2,
                   color: const Color(0xFF797FD8),
-                  scale: 1.15,
+                  initialScale: 1.15,
                   flipY: true,
                   tween: Tween(begin: 0, end: 0.75)),
               pagePieceViewModel: PagePieceViewModel(
@@ -318,9 +324,10 @@ class ContentDataSource implements DataSource {
           cloudSeed: 2,
           backgroundViewModel: PageBackgroundViewModel(
               color: const Color(0xFF642828),
-              textureViewModel: PageTextureViewModel(ImagePaths.roller2,
+              textureViewModel: PagePieceViewModel(
+                  fileName: ImagePaths.roller2,
                   color: const Color(0xFFC96454),
-                  scale: 1.15,
+                  initialScale: 1.15,
                   flipY: true,
                   tween: Tween(begin: 0, end: 0.7)),
               pagePieceViewModel: PagePieceViewModel(
@@ -362,10 +369,11 @@ class ContentDataSource implements DataSource {
           cloudSeed: 37,
           backgroundViewModel: PageBackgroundViewModel(
               color: const Color(0xFF0E4064),
-              textureViewModel: PageTextureViewModel(ImagePaths.roller1,
+              textureViewModel: PagePieceViewModel(
+                  fileName: ImagePaths.roller1,
                   color: const Color(0xff1E736D),
                   flipX: false,
-                  scale: 1,
+                  initialScale: 1,
                   tween: Tween(begin: 0, end: 0.5)),
               pagePieceViewModel: PagePieceViewModel(
                   fileName: 'assets/images/machu_picchu/sun.png',
