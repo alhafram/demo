@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:page_controller/assets.dart';
+import 'package:page_controller/asset_view_model.dart';
 import 'package:page_controller/color_utils.dart';
-import 'package:page_controller/components/data_source.dart';
-import 'package:page_controller/components/asset_view_model.dart';
+import 'package:page_controller/image_paths.dart';
+import 'package:page_controller/page_controller_data_source.dart';
+import 'package:page_controller/page_controller_delegate.dart';
 
-class ContentDataSource implements DataSource {
+class ContentDataSource implements PageControllerDataSource {
   @override
   List<PageViewModel> viewModels = [];
 
   @override
-  DataSourceDelegate? delegate;
+  PageControllerDelegate? delegate;
 
-  void setupDelegate(DataSourceDelegate delegate) {
+  void setupDelegate(PageControllerDelegate delegate) {
     this.delegate = delegate;
   }
 
@@ -19,9 +20,9 @@ class ContentDataSource implements DataSource {
     viewModels = [
       PageViewModel(
           id: 0,
-          pageType: Type.fallAsleep,
+          pageType: PageType.fallAsleep,
           bgColor: const Color(0xFF642828),
-          cloudSeed: 500,
+          animatedAssetSeed: 500,
           color: ColorUtils.shiftHsl(const Color(0xFF688750), .15),
           textureViewModel: AssetViewModel(
               fileName: ImagePaths.roller2,
@@ -65,9 +66,9 @@ class ContentDataSource implements DataSource {
               fractionalOffset: const Offset(0, -.15))),
       PageViewModel(
           id: 1,
-          pageType: Type.feelBetter,
+          pageType: PageType.feelBetter,
           bgColor: const Color(0xFF444B9B),
-          cloudSeed: 111,
+          animatedAssetSeed: 111,
           color: const Color(0xFF1B1A65),
           heightFactor: .8,
           alignment: Alignment.bottomCenter,
@@ -110,9 +111,9 @@ class ContentDataSource implements DataSource {
               fractionalOffset: Offset.zero)),
       PageViewModel(
           id: 2,
-          pageType: Type.reduceStress,
+          pageType: PageType.reduceStress,
           bgColor: const Color(0xFF1E736D),
-          cloudSeed: 1,
+          animatedAssetSeed: 1,
           color: ColorUtils.shiftHsl(const Color(0xFF4AA39D), .15),
           textureViewModel: AssetViewModel(
               fileName: ImagePaths.roller1,
@@ -153,9 +154,9 @@ class ContentDataSource implements DataSource {
               fractionalOffset: const Offset(0, -.1))),
       PageViewModel(
           id: 3,
-          pageType: Type.calmDown,
+          pageType: PageType.calmDown,
           bgColor: const Color(0xFF164F2A),
-          cloudSeed: 2,
+          animatedAssetSeed: 2,
           color: const Color(0xFFE2CFBB),
           offset: const Offset(0, -30),
           textureViewModel: AssetViewModel(
@@ -215,9 +216,9 @@ class ContentDataSource implements DataSource {
               zoomAmt: -.1)),
       PageViewModel(
           id: 4,
-          pageType: Type.feelRelaxed,
+          pageType: PageType.feelRelaxed,
           bgColor: const Color(0xFF1C4D46),
-          cloudSeed: 78,
+          animatedAssetSeed: 78,
           color: const Color(0xFFED7967),
           clipBehavior: Clip.none,
           textureViewModel: AssetViewModel(
@@ -262,9 +263,9 @@ class ContentDataSource implements DataSource {
               zoomAmt: .7)),
       PageViewModel(
           id: 5,
-          pageType: Type.beCreative,
+          pageType: PageType.beCreative,
           bgColor: const Color(0xFF16184D),
-          cloudSeed: 15,
+          animatedAssetSeed: 15,
           color: const Color(0xFF444B9B),
           textureViewModel: AssetViewModel(
               fileName: ImagePaths.roller2,
@@ -307,9 +308,9 @@ class ContentDataSource implements DataSource {
               fractionalOffset: const Offset(0, -.15))),
       PageViewModel(
           id: 6,
-          pageType: Type.beCreative,
+          pageType: PageType.beCreative,
           bgColor: const Color(0xFFC96454),
-          cloudSeed: 2,
+          animatedAssetSeed: 2,
           color: const Color(0xFF642828),
           textureViewModel: AssetViewModel(
               fileName: ImagePaths.roller2,
@@ -350,9 +351,9 @@ class ContentDataSource implements DataSource {
               fractionalOffset: const Offset(0, -.15))),
       PageViewModel(
           id: 7,
-          pageType: Type.anotherType,
+          pageType: PageType.anotherType,
           bgColor: const Color(0xFF0E4064),
-          cloudSeed: 37,
+          animatedAssetSeed: 37,
           color: const Color(0xFF0E4064),
           textureViewModel: AssetViewModel(
               fileName: ImagePaths.roller1,

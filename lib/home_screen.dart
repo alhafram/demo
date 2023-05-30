@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:page_controller/components/data_source.dart';
-import 'package:page_controller/components/asset_view_model.dart';
+import 'package:page_controller/asset_view_model.dart';
+import 'package:page_controller/page_controller_delegate.dart';
 import 'package:page_controller/swipeable_widget.dart';
 
-class HomeScreen extends StatelessWidget implements DataSourceDelegate {
+// ignore: must_be_immutable
+class HomeScreen extends StatelessWidget implements PageControllerDelegate {
   HomeScreen({super.key});
 
   late BuildContext _buildContext;
@@ -16,18 +17,18 @@ class HomeScreen extends StatelessWidget implements DataSourceDelegate {
   }
 
   @override
-  void pageDidOpenDetailScreen(Type pageType) {
+  void pageDidOpenDetailScreen(PageType pageType) {
     GoRouter.of(_buildContext).push('/details');
     print('Open details $pageType');
   }
 
   @override
-  void pageDidOpened(Type pageType) {
+  void pageDidOpened(PageType pageType) {
     print('Open page $pageType');
   }
 
   @override
-  void pageDidTapMainButton(Type pageType) {
+  void pageDidTapMainButton(PageType pageType) {
     print('Tap main button $pageType');
   }
 }
