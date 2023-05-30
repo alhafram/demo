@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_controller/components/data_source.dart';
-import 'package:page_controller/components/view_models.dart';
+import 'package:page_controller/components/asset_view_model.dart';
 import 'package:page_controller/swipeable_widget.dart';
 
 class HomeScreen extends StatelessWidget implements DataSourceDelegate {
