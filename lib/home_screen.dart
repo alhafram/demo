@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pager/components/data_source.dart';
-import 'package:pager/components/view_models.dart';
-import 'package:pager/swipeable_widget.dart';
+import 'package:page_controller/components/data_source.dart';
+import 'package:page_controller/components/view_models.dart';
+import 'package:page_controller/swipeable_widget.dart';
 
 class HomeScreen extends StatelessWidget implements DataSourceDelegate {
   HomeScreen({super.key});

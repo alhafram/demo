@@ -144,10 +144,10 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
-  pager:
+  page_controller:
     dependency: "direct main"
     description:
-      path: "modules/pager"
+      path: "modules/page_controller"
       relative: true
     source: path
     version: "1.0.0"

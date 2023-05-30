@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pager/assets.dart';
-import 'package:pager/color_utils.dart';
-import 'package:pager/components/data_source.dart';
-import 'package:pager/components/view_models.dart';
+import 'package:page_controller/assets.dart';
+import 'package:page_controller/color_utils.dart';
+import 'package:page_controller/components/data_source.dart';
+import 'package:page_controller/components/view_models.dart';
 
 class ContentDataSource implements DataSource {
   @override
